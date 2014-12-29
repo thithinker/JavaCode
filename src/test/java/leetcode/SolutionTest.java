@@ -31,4 +31,11 @@ public class SolutionTest extends TestCase {
         assertEquals(1, solution.majorityElement(nums1));
         assertEquals(2, solution.majorityElement((nums2)));
     }
+
+    public void testConvertToTitle(){
+        System.out.println("testConvertToTitle");
+        assertEquals("A", solution.convertToTitle(1));
+        assertEquals("Z", solution.convertToTitle(26));
+        assertEquals("AB", solution.convertToTitle(28));
+    }
 }
