@@ -1,7 +1,10 @@
 package leetcode;
 
+import java.math.BigInteger;
+import java.util.Arrays;
+
 /**
- * Created by yize on 2014/12/29.
+ * Created by yize on 2014/12/29 to solve LeetCode OJ.
  */
 public class Solution{
     /**
@@ -63,4 +66,124 @@ public class Solution{
         return result.toString();
     }
 
+    /**
+     * LeetCode 172: 给一个整数，返回该数的阶乘尾数的零的个数。(对数时间复杂度)
+     * @param n: 输入整数
+     * @return: n!的尾数中零的个数
+     */
+    public int trailingZeroes(int n){
+        int power = 0;
+        while(Math.pow(5, power) < n){
+            power++;
+        }
+        int count = 0;
+        while(power > 0){
+            count += n / (long)Math.pow(5, power--);
+        }
+        return count;
+    }
+
+    /**
+     * LeetCode 172: 给一个整数，返回该数的阶乘尾数的零的个数。
+     * @param n: 输入整数
+     * @return: n!的尾数中零的个数
+     */
+    public int trailingZeroes_2(int n){
+        BigInteger bi = BigInteger.ONE;
+        while(n > 0){
+            bi = bi.multiply(new BigInteger(n + ""));
+            n--;
+        }
+        String s = bi.toString();
+        int len = s.length();
+        int count = 0;
+        while(s.charAt(len - 1) == '0'){
+            count++;
+            len--;
+        }
+        return count;
+    }
+
+    /**
+     * LeetCode 8: 将字符串转换成整数。(注意空字符，非数字符，溢出等)
+     * @param str
+     * @return
+     */
+    public int atoi(String str){
+        if(str.equals("")){
+            return 0;
+        }
+        int off = 0;
+        while(str.charAt(off) == ' '){
+            off++;
+        }
+        str = str.substring(off);
+        String sign = "";
+        if(str.charAt(0) == '-' || str.charAt(0) == '+'){
+            sign = str.charAt(0) + "";
+            str = str.substring(1);
+        }
+        long number = 0;
+        for(int i = 0; i < str.length(); i++){
+            if(!Character.isDigit(str.charAt(i))){
+                break;
+            }
+            number = number * 10 + (str.charAt(i) - '0');
+            if(number > Integer.MAX_VALUE){
+                if(sign.equals("-") && number > 2147483648L){
+                    return Integer.MIN_VALUE;
+                }else if((sign.equals("") || sign.equals("+")) && number > 2147483647){
+                    return Integer.MAX_VALUE;
+                }
+            }
+        }
+        if(sign.equals("-")){
+            return -1 * (int)number;
+        }else{
+            return (int)number;
+        }
+    }
+
+    /**
+     * Leetcode 1: 找出整数数组中两个数的和等于目标值的索引。(假定输入有且仅有一种结果)
+     * @param numbers: 输入数组
+     * @param target: 目标值
+     * @return: 输入数组中两数和等于目标值的下标
+     */
+    public int[] twoSum(int[] numbers, int target){
+        int len = numbers.length;
+        int[] tmp = new int[len];
+        System.arraycopy(numbers, 0, tmp, 0, len);
+
+        Arrays.sort(tmp);
+        int left = 0;
+        int right = len - 1;
+        int firstNum = 0;
+        int secondNum = 0;
+        while(left < right) {
+            if (tmp[left] + tmp[right] < target) {
+                left++;
+                continue;
+            }else if(tmp[left] + tmp[right] > target){
+                right--;
+                continue;
+            }
+            firstNum = tmp[left];
+            secondNum = tmp[right];
+            break;
+        }
+        int firstOffset = -1;
+        int secondOffset = -1;
+        for (int i = 0; i < len; i++){
+            if(numbers[i] == firstNum || numbers[i] == secondNum){
+                if(firstOffset == -1){
+                    firstOffset = i + 1;
+                    continue;
+                }
+                secondOffset = i + 1;
+                break;
+            }
+        }
+        return new int[]{firstOffset, secondOffset};
+    }
 }
