@@ -383,7 +383,6 @@ public class Solution{
         boolean finished = false;
         boolean stepAhead = true;
         String tmp;
-
         while(!finished){
             if(offset > strs[0].length()){
                 offset = strs[0].length();

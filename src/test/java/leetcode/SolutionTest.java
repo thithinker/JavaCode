@@ -171,10 +171,8 @@ public class SolutionTest extends TestCase {
     public void testLongestCommonPrefix(){
         String[] strs_1 = {"asdfgqwe", "asdfwer", "asdfgexx"};
         assertEquals("asdf", solution.longestCommonPrefix(strs_1));
-
         String[] strs_2 = {"asdfgqwe", "assdfwer", "asdfgexx"};
         assertEquals("as", solution.longestCommonPrefix(strs_2));
-
         String[] strs_3 = {"asdfgqwe", "asdfwer", "basdfgexx"};
         assertEquals("", solution.longestCommonPrefix(strs_3));
 
