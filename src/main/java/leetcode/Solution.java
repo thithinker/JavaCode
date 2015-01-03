@@ -368,4 +368,49 @@ public class Solution{
         return result;
     }
 
+    /**
+     * LeetCode 14: 找出字符串数组中各字符串的最长公共前缀
+     * @param strs 字符串数组
+     * @return 公共前缀
+     */
+    public String longestCommonPrefix(String[] strs){
+        if(strs.length == 0){
+            return "";
+        }
+        int arrLen = strs.length;
+        int offset = 1;
+        int commonStrOffset = 0;
+        boolean finished = false;
+        boolean stepAhead = true;
+        String tmp;
+
+        while(!finished){
+            if(offset > strs[0].length()){
+                offset = strs[0].length();
+            }
+            tmp = strs[0].substring(0, offset);
+            for(int i = 0; i < arrLen; i++){
+                if(strs[i].startsWith(tmp)){
+                    if(i == arrLen - 1){
+                        if(commonStrOffset < offset){
+                            commonStrOffset = offset;
+                        }else{
+                            finished = true;
+                        }
+                    }
+                    continue;
+                }
+                offset -= 1;
+                stepAhead = false;
+                if(offset <= commonStrOffset || offset == 0){
+                    finished = true;
+                }
+                break;
+            }
+            if(stepAhead){
+                offset *= 2;
+            }
+        }
+        return strs[0].substring(0, commonStrOffset);
+    }
 }

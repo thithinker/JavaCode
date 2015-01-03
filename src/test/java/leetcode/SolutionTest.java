@@ -166,6 +166,25 @@ public class SolutionTest extends TestCase {
         assertEquals(199, solution.romanToInt("CXCIX"));
         assertEquals(1880, solution.romanToInt("MDCCCLXXX"));
         assertEquals(3333, solution.romanToInt("MMMCCCXXXIII"));
+    }
 
+    public void testLongestCommonPrefix(){
+        String[] strs_1 = {"asdfgqwe", "asdfwer", "asdfgexx"};
+        assertEquals("asdf", solution.longestCommonPrefix(strs_1));
+
+        String[] strs_2 = {"asdfgqwe", "assdfwer", "asdfgexx"};
+        assertEquals("as", solution.longestCommonPrefix(strs_2));
+
+        String[] strs_3 = {"asdfgqwe", "asdfwer", "basdfgexx"};
+        assertEquals("", solution.longestCommonPrefix(strs_3));
+
+        String[] strs_4 = {"asdfgqwe", "asdfgqwe", "asdfgqwe"};
+        assertEquals("asdfgqwe", solution.longestCommonPrefix(strs_4));
+
+        String[] strs_5 = {};
+        assertEquals("", solution.longestCommonPrefix(strs_5));
+
+        String[] strs_6 = {"abca","abc"};
+        assertEquals("abc", solution.longestCommonPrefix(strs_6));
     }
 }
