@@ -108,4 +108,64 @@ public class SolutionTest extends TestCase {
         int[] r4 = solution.twoSum(m4, 0);
         System.out.println(r4[0] + " " + r4[1]);
     }
+
+    public void testConvert(){
+        /*String s = "PAYPALISHIRING";
+        for ( int i = 0; i < s.length(); i++){
+            System.out.println("i = " + i + " " + solution.convert(s, i));
+        }*/
+        String s = "twckwuyvbihajbmhmodminftgpdcbquupwflqfiunpuwtigfwjtgzzcfofjpyd" +
+                "jnzqysvgmiyifrrlwpwpyvqadefmvfshsrxsltbxbziiqbvosufqpwsucy" +
+                "jyfbhauesgzvfdwnloojejdkzugsrksakzbrzxwudxpjaoyocpxhycrxwz" +
+                "rpllpwlsnkqlevjwejkfxmuwvsyopxpjmbuexfwksoywkhsqqevqtpoohpd";
+        System.out.println("i = " + 15 + " " + solution.convert(s, 4));
+    }
+
+    public void testReverse(){
+        assertEquals(321, solution.reverse(123));
+        assertEquals(-321, solution.reverse(-123));
+        assertEquals(0, solution.reverse(0));
+        assertEquals(321, solution.reverse(12300));
+        assertEquals(-321, solution.reverse(-12300));
+        //assertEquals(0, solution.reverse(1000000003));
+        assertEquals(0, solution.reverse(Integer.MIN_VALUE));
+        assertEquals(0, solution.reverse(Integer.MAX_VALUE));
+        assertEquals(0, solution.reverse(1534236469));
+
+        System.out.println("ABS: " + Math.abs(Integer.MIN_VALUE));
+    }
+
+    public void testIsPalindrome(){
+        assertEquals(true, solution.isPalindrome(12221));
+        assertEquals(true, solution.isPalindrome(1221));
+        assertEquals(false, solution.isPalindrome(-12221));
+        assertEquals(false, solution.isPalindrome(-1221));
+        assertEquals(false, solution.isPalindrome(12211));
+        assertEquals(true, solution.isPalindrome(1));
+        assertEquals(false, solution.isPalindrome(-2147447412));
+    }
+
+    public void testRomanToInt(){
+        assertEquals(1, solution.romanToInt("I"));
+        assertEquals(10, solution.romanToInt("X"));
+        assertEquals(18, solution.romanToInt("XVIII"));
+        assertEquals(19, solution.romanToInt("XIX"));
+        assertEquals(45, solution.romanToInt("XLV"));
+        assertEquals(199, solution.romanToInt("CXCIX"));
+        assertEquals(1880, solution.romanToInt("MDCCCLXXX"));
+        assertEquals(3333, solution.romanToInt("MMMCCCXXXIII"));
+
+    }
+
+    public void testRomanToInt2(){
+        assertEquals(1, solution.romanToInt("I"));
+        assertEquals(10, solution.romanToInt("X"));
+        assertEquals(18, solution.romanToInt("XVIII"));
+        assertEquals(19, solution.romanToInt("XIX"));
+        assertEquals(45, solution.romanToInt("XLV"));
+        assertEquals(199, solution.romanToInt("CXCIX"));
+        assertEquals(1880, solution.romanToInt("MDCCCLXXX"));
+        assertEquals(3333, solution.romanToInt("MMMCCCXXXIII"));
+
+    }
 }
