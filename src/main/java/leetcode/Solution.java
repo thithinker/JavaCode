@@ -1,24 +1,23 @@
 package leetcode;
 
 import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by yize on 2014/12/29 to solve LeetCode OJ.
  */
-public class Solution{
+public class Solution {
     /**
      * leetcode 171: 将Excel Sheet的表头转换成数字，如A->1, B->2, ..., AA->26, AB->27.
+     *
      * @param s: 代表Excel表头的字符串
      * @return 返回Excel表头对应的整数
      */
-    public int titleToNumber(String s){
+    public int titleToNumber(String s) {
         char[] chs = s.toCharArray();
         int result = 0;
         int len = s.length();
-        for(char c : chs){
+        for (char c : chs) {
             result += (c - 'A' + 1) * (int) Math.pow(26, --len);
         }
         return result;
@@ -26,18 +25,19 @@ public class Solution{
 
     /**
      * leetcode 169: 找出整数数组中的主元素(数组长度为n，则主元素的个数多于⌊n/2⌋)
+     *
      * @param num: 输入数组
      * @return 返回输入数组的主元素
      */
-    public int majorityElement(int[] num){
+    public int majorityElement(int[] num) {
         int lastNum = num[0];
         int count = 1;
-        for (int i = 1; i < num.length; i++){
-            if(num[i] == lastNum){
+        for (int i = 1; i < num.length; i++) {
+            if (num[i] == lastNum) {
                 count++;
-            }else{
+            } else {
                 count--;
-                if (count < 1){
+                if (count < 1) {
                     lastNum = num[i];
                     count = 1;
                 }
@@ -48,19 +48,20 @@ public class Solution{
 
     /**
      * LeetCode 168: 将给定的正数转换为Excel列表表头的形式，如1->A, 26 -> Z, 28 -> AB.
+     *
      * @param n 输入正数
-     * @return  返回n对应的Excel表头.
+     * @return 返回n对应的Excel表头.
      */
-    public String convertToTitle(int n){
+    public String convertToTitle(int n) {
         StringBuilder result = new StringBuilder();
         int remainder;
-        while(n != 0){
+        while (n != 0) {
             remainder = n % 26;
-            if(remainder == 0){
+            if (remainder == 0) {
                 result.insert(0, "Z");
                 n = (n - 26) / 26;
-            }else{
-                result.insert(0, (char)(remainder + 'A' - 1));
+            } else {
+                result.insert(0, (char) (remainder + 'A' - 1));
                 n = (n - remainder) / 26;
             }
         }
@@ -70,36 +71,38 @@ public class Solution{
 
     /**
      * LeetCode 172: 给一个整数，返回该数的阶乘尾数的零的个数。(对数时间复杂度)
+     *
      * @param n: 输入整数
      * @return n!的尾数中零的个数
      */
-    public int trailingZeroes(int n){
+    public int trailingZeroes(int n) {
         int power = 0;
-        while(Math.pow(5, power) < n){
+        while (Math.pow(5, power) < n) {
             power++;
         }
         int count = 0;
-        while(power > 0){
-            count += n / (long)Math.pow(5, power--);
+        while (power > 0) {
+            count += n / (long) Math.pow(5, power--);
         }
         return count;
     }
 
     /**
      * LeetCode 172: 给一个整数，返回该数的阶乘尾数的零的个数。
+     *
      * @param n: 输入整数
      * @return n!的尾数中零的个数
      */
-    public int trailingZeroes_2(int n){
+    public int trailingZeroes_2(int n) {
         BigInteger bi = BigInteger.ONE;
-        while(n > 0){
+        while (n > 0) {
             bi = bi.multiply(new BigInteger(n + ""));
             n--;
         }
         String s = bi.toString();
         int len = s.length();
         int count = 0;
-        while(s.charAt(len - 1) == '0'){
+        while (s.charAt(len - 1) == '0') {
             count++;
             len--;
         }
@@ -108,51 +111,53 @@ public class Solution{
 
     /**
      * LeetCode 8: 将字符串转换成整数。(注意空字符，非数字符，溢出等)
+     *
      * @param str 整数字符串
      * @return 整数
      */
-    public int atoi(String str){
-        if(str.equals("")){
+    public int atoi(String str) {
+        if (str.equals("")) {
             return 0;
         }
         int off = 0;
-        while(str.charAt(off) == ' '){
+        while (str.charAt(off) == ' ') {
             off++;
         }
         str = str.substring(off);
         String sign = "";
-        if(str.charAt(0) == '-' || str.charAt(0) == '+'){
+        if (str.charAt(0) == '-' || str.charAt(0) == '+') {
             sign = str.charAt(0) + "";
             str = str.substring(1);
         }
         long number = 0;
-        for(int i = 0; i < str.length(); i++){
-            if(!Character.isDigit(str.charAt(i))){
+        for (int i = 0; i < str.length(); i++) {
+            if (!Character.isDigit(str.charAt(i))) {
                 break;
             }
             number = number * 10 + (str.charAt(i) - '0');
-            if(number > Integer.MAX_VALUE){
-                if(sign.equals("-") && number > 2147483648L){
+            if (number > Integer.MAX_VALUE) {
+                if (sign.equals("-") && number > 2147483648L) {
                     return Integer.MIN_VALUE;
-                }else if((sign.equals("") || sign.equals("+")) && number > 2147483647){
+                } else if ((sign.equals("") || sign.equals("+")) && number > 2147483647) {
                     return Integer.MAX_VALUE;
                 }
             }
         }
-        if(sign.equals("-")){
-            return -1 * (int)number;
-        }else{
-            return (int)number;
+        if (sign.equals("-")) {
+            return -1 * (int) number;
+        } else {
+            return (int) number;
         }
     }
 
     /**
      * Leetcode 1: 找出整数数组中两个数的和等于目标值的索引。(假定输入有且仅有一种结果)
+     *
      * @param numbers: 输入数组
-     * @param target: 目标值
+     * @param target:  目标值
      * @return 输入数组中两数和等于目标值的下标
      */
-    public int[] twoSum(int[] numbers, int target){
+    public int[] twoSum(int[] numbers, int target) {
         int len = numbers.length;
         int[] tmp = new int[len];
         System.arraycopy(numbers, 0, tmp, 0, len);
@@ -162,11 +167,11 @@ public class Solution{
         int right = len - 1;
         int firstNum = 0;
         int secondNum = 0;
-        while(left < right) {
+        while (left < right) {
             if (tmp[left] + tmp[right] < target) {
                 left++;
                 continue;
-            }else if(tmp[left] + tmp[right] > target){
+            } else if (tmp[left] + tmp[right] > target) {
                 right--;
                 continue;
             }
@@ -176,9 +181,9 @@ public class Solution{
         }
         int firstOffset = -1;
         int secondOffset = -1;
-        for (int i = 0; i < len; i++){
-            if(numbers[i] == firstNum || numbers[i] == secondNum){
-                if(firstOffset == -1){
+        for (int i = 0; i < len; i++) {
+            if (numbers[i] == firstNum || numbers[i] == secondNum) {
+                if (firstOffset == -1) {
                     firstOffset = i + 1;
                     continue;
                 }
@@ -191,13 +196,14 @@ public class Solution{
 
     /**
      * Leetcode 6: 以之字形转换字符串
-     * @param s: 待转换的字符串
+     *
+     * @param s:     待转换的字符串
      * @param nRows: 之字的行数
      * @return 转换后的字符串
      * (超时)
      */
-    public String convert(String s, int nRows){
-        if(nRows == 0){
+    public String convert(String s, int nRows) {
+        if (nRows == 0) {
             return s;
         }
         int sLength = s.length();
@@ -205,16 +211,16 @@ public class Solution{
         char[][] chs = new char[nRows][nCols];
         int currCharOffset = 0;
         boolean directDown = true;
-        for(int col = 0; col < nCols; col++){
-            for(int row = 0; row < nRows; row++){
-                if(directDown && currCharOffset < sLength){
+        for (int col = 0; col < nCols; col++) {
+            for (int row = 0; row < nRows; row++) {
+                if (directDown && currCharOffset < sLength) {
                     chs[row][col] = s.charAt(currCharOffset++);
-                    if(row == nRows - 1){
+                    if (row == nRows - 1) {
                         directDown = false;
                     }
                 }
-                if(!directDown){
-                    while(row > 1 && currCharOffset < sLength){
+                if (!directDown) {
+                    while (row > 1 && currCharOffset < sLength) {
                         chs[--row][++col] = s.charAt(currCharOffset++);
                     }
                     directDown = true;
@@ -224,9 +230,9 @@ public class Solution{
         }
 
         StringBuilder stringBuilder = new StringBuilder();
-        for(int row = 0; row < nRows; row++){
-            for(int col = 0; col < nCols; col++){
-                if(Character.isLetterOrDigit(chs[row][col])){
+        for (int row = 0; row < nRows; row++) {
+            for (int col = 0; col < nCols; col++) {
+                if (Character.isLetterOrDigit(chs[row][col])) {
                     stringBuilder.append(chs[row][col]);
                 }
             }
@@ -236,42 +242,44 @@ public class Solution{
 
     /**
      * Leetcode 7: 反转整数
+     *
      * @param x: 输入的整数
      * @return 反转后的整数
      */
-    public int reverse(int x){
+    public int reverse(int x) {
         boolean isNegative = false;
-        if(x < 0){
+        if (x < 0) {
             isNegative = true;
             x = Math.abs(x);
         }
         int mod;
         long result = 0;
-        while(x > 0){
+        while (x > 0) {
             mod = x % 10;
             result = result * 10 + mod;
             x = (x - mod) / 10;
         }
-        if(result > Integer.MAX_VALUE){
+        if (result > Integer.MAX_VALUE) {
             return 0;
         }
-        if(isNegative){
+        if (isNegative) {
             result *= -1;
         }
-        return (int)result;
+        return (int) result;
     }
 
     /**
      * LeetCode 9: 判断回文数
+     *
      * @param x: 输入整数
      * @return 若x是回文数返回true, 否则返回false.
      */
-    public boolean isPalindrome(int x){
+    public boolean isPalindrome(int x) {
         String s = x + "";
         int left = 0;
         int right = s.length() - 1;
-        while(left < right){
-            if(s.charAt(left) == s.charAt(right)){
+        while (left < right) {
+            if (s.charAt(left) == s.charAt(right)) {
                 left++;
                 right--;
                 continue;
@@ -283,10 +291,11 @@ public class Solution{
 
     /**
      * LeetCode 13: 将罗马数字的字符串转换成整数
+     *
      * @param s 罗马数字的字符串
      * @return s对应的整数
      */
-    public int romanToInt(String s){
+    public int romanToInt(String s) {
         //I（1）、V（5）、X（10）、L（50）、C（100）、D（500）和M（1000）
         Map<Character, Integer> charValueMap = new HashMap<Character, Integer>(10);
         Map<Character, Integer> charIndexMap = new HashMap<Character, Integer>(10);
@@ -310,24 +319,24 @@ public class Solution{
         int nextIndex = 1;
         int strLen = s.length() - 1;
         int result = 0;
-        while(nextIndex <= strLen){
-            if(charIndexMap.get(s.charAt(currIndex)) < charIndexMap.get(s.charAt(nextIndex))){
+        while (nextIndex <= strLen) {
+            if (charIndexMap.get(s.charAt(currIndex)) < charIndexMap.get(s.charAt(nextIndex))) {
                 result += charValueMap.get(s.charAt(nextIndex)) - charValueMap.get(s.charAt(currIndex));
                 currIndex += 2;
                 nextIndex += 2;
-            }else{
+            } else {
                 result += charValueMap.get(s.charAt(currIndex));
                 currIndex += 1;
                 nextIndex += 1;
             }
         }
-        if(currIndex <= strLen){
+        if (currIndex <= strLen) {
             result += charValueMap.get(s.charAt(currIndex));
         }
         return result;
     }
 
-    public int romanToInt2(String s){
+    public int romanToInt2(String s) {
         //I（1）、V（5）、X（10）、L（50）、C（100）、D（500）和M（1000）
         char[] sToChars = s.toCharArray();
         int[] charValueArray = new int[128];
@@ -351,18 +360,18 @@ public class Solution{
         int nextIndex = 1;
         int strLen = s.length() - 1;
         int result = 0;
-        while(nextIndex <= strLen){
-            if(charIndexArray[sToChars[currIndex]] < charIndexArray[sToChars[nextIndex]]){
+        while (nextIndex <= strLen) {
+            if (charIndexArray[sToChars[currIndex]] < charIndexArray[sToChars[nextIndex]]) {
                 result += charValueArray[sToChars[nextIndex]] - charValueArray[sToChars[currIndex]];
                 currIndex += 2;
                 nextIndex += 2;
-            }else{
+            } else {
                 result += charValueArray[sToChars[currIndex]];
                 currIndex += 1;
                 nextIndex += 1;
             }
         }
-        if(currIndex <= strLen){
+        if (currIndex <= strLen) {
             result += charValueArray[sToChars[currIndex]];
         }
         return result;
@@ -370,11 +379,12 @@ public class Solution{
 
     /**
      * LeetCode 14: 找出字符串数组中各字符串的最长公共前缀
+     *
      * @param strs 字符串数组
      * @return 公共前缀
      */
-    public String longestCommonPrefix(String[] strs){
-        if(strs.length == 0){
+    public String longestCommonPrefix(String[] strs) {
+        if (strs.length == 0) {
             return "";
         }
         int arrLen = strs.length;
@@ -383,17 +393,17 @@ public class Solution{
         boolean finished = false;
         boolean stepAhead = true;
         String tmp;
-        while(!finished){
-            if(offset > strs[0].length()){
+        while (!finished) {
+            if (offset > strs[0].length()) {
                 offset = strs[0].length();
             }
             tmp = strs[0].substring(0, offset);
-            for(int i = 0; i < arrLen; i++){
-                if(strs[i].startsWith(tmp)){
-                    if(i == arrLen - 1){
-                        if(commonStrOffset < offset){
+            for (int i = 0; i < arrLen; i++) {
+                if (strs[i].startsWith(tmp)) {
+                    if (i == arrLen - 1) {
+                        if (commonStrOffset < offset) {
                             commonStrOffset = offset;
-                        }else{
+                        } else {
                             finished = true;
                         }
                     }
@@ -401,15 +411,160 @@ public class Solution{
                 }
                 offset -= 1;
                 stepAhead = false;
-                if(offset <= commonStrOffset || offset == 0){
+                if (offset <= commonStrOffset || offset == 0) {
                     finished = true;
                 }
                 break;
             }
-            if(stepAhead){
+            if (stepAhead) {
                 offset *= 2;
             }
         }
         return strs[0].substring(0, commonStrOffset);
+    }
+
+    public List<List<Integer>> threeSum(int[] num) {
+        Set<List<Integer>> resultSet = new HashSet<List<Integer>>();
+        List<Integer> positive = new ArrayList<Integer>();
+        List<Integer> negative = new ArrayList<Integer>();
+        int countZero = 0;
+        for (int i : num) {
+            if (i < 0) {
+                negative.add(i);
+            } else {
+                positive.add(i);
+                if(i == 0){
+                    countZero++;
+                }
+            }
+        }
+
+        int positiveSize = positive.size();
+        int negativeSize = negative.size();
+
+        if(countZero >= 3){
+            List<Integer> list = new ArrayList<Integer>(3);
+            list.add(0);
+            list.add(0);
+            list.add(0);
+            resultSet.add(list);
+        }
+        for (int i = 0; i < positiveSize; i++) {
+            for (int j = 0; j < positiveSize; j++) {
+                for (int z : negative) {
+                    if (positive.get(i) + positive.get(j) + z == 0 && i != j) {
+                        List<Integer> list = new ArrayList<Integer>();
+                        list.add(z);
+                        list.add(positive.get(i));
+                        list.add(positive.get(j));
+                        Collections.sort(list);
+                        resultSet.add(list);
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < negativeSize; i++) {
+            for (int j = 0; j < negativeSize; j++) {
+                for (int z : positive) {
+                    if (negative.get(i) + negative.get(j) + z == 0 && i != j) {
+                        List<Integer> list = new ArrayList<Integer>();
+                        list.add(z);
+                        list.add(negative.get(i));
+                        list.add(negative.get(j));
+                        Collections.sort(list);
+                        resultSet.add(list);
+                    }
+                }
+            }
+        }
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        for (List<Integer> l : resultSet) {
+            result.add(l);
+            //System.out.println("Result: " + Arrays.deepToString(l.toArray()));
+        }
+        return result;
+    }
+
+    public List<List<Integer>> threeSum_2(int[] num) {
+        Set<List<Integer>> resultSet = new HashSet<List<Integer>>();
+        List<Integer> positive = new ArrayList<Integer>();
+        List<Integer> negative = new ArrayList<Integer>();
+        int countZero = 0;
+        for (int i : num) {
+            if (i < 0) {
+                negative.add(i);
+            } else {
+                positive.add(i);
+                if(i == 0){
+                    countZero++;
+                }
+            }
+        }
+
+        BitSet positiveBitSet = new BitSet();
+        BitSet netativeBitSet = new BitSet();
+
+        for(int i : positive){
+            positiveBitSet.set(i);
+        }
+        for(int i : negative){
+            netativeBitSet.set(i * -1);
+        }
+
+        int positiveSize = positive.size();
+        int negativeSize = negative.size();
+
+        int tmp;
+        List<Integer> list;
+
+        if(countZero >= 3){
+            list = new ArrayList<Integer>(3);
+            list.add(0);
+            list.add(0);
+            list.add(0);
+            resultSet.add(list);
+        }
+        for (int i = 0; i < positiveSize; i++) {
+            for (int j = 0; j < positiveSize; j++) {
+                tmp = positive.get(i) + positive.get(j);
+                if(netativeBitSet.get(tmp) && i != j){
+                    list = new ArrayList<Integer>();
+                    list.add(tmp * -1);
+                    if(positive.get(i) < positive.get(j)){
+                        list.add(positive.get(i));
+                        list.add(positive.get(j));
+                    }else{
+                        list.add(positive.get(j));
+                        list.add(positive.get(i));
+                    }
+                    resultSet.add(list);
+                }
+            }
+        }
+
+        for (int i = 0; i < negativeSize; i++) {
+            for (int j = 0; j < negativeSize; j++) {
+                tmp = (negative.get(i) + negative.get(j)) * -1;
+                if(positiveBitSet.get(tmp) && i != j){
+                    list = new ArrayList<Integer>();
+                    if(negative.get(i) < negative.get(j)){
+                        list.add(negative.get(i));
+                        list.add(negative.get(j));
+                    }else{
+                        list.add(negative.get(j));
+                        list.add(negative.get(i));
+                    }
+                    list.add(tmp);
+                    resultSet.add(list);
+                }
+            }
+        }
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        for (List<Integer> l : resultSet) {
+            result.add(l);
+            //System.out.println("Result: " + Arrays.deepToString(l.toArray()));
+        }
+        return result;
     }
 }
