@@ -291,7 +291,6 @@ public class Solution {
 
     /**
      * LeetCode 13: 将罗马数字的字符串转换成整数
-     *
      * @param s 罗马数字的字符串
      * @return s对应的整数
      */
@@ -567,4 +566,170 @@ public class Solution {
         }
         return result;
     }
-}
+
+    /**
+     * LeetCode 20: 判断输入括号是否是合法的
+     * @param s 输入括号
+     * @return 若为合法括号返回true，否则返回false
+     */
+    public boolean isValid(String s){
+        int[] charToInt = new int[128];
+        charToInt['('] = 1;
+        charToInt[')'] = -1;
+        charToInt['{'] = 2;
+        charToInt['}'] = -2;
+        charToInt['['] = 3;
+        charToInt[']'] = -3;
+        Stack<Integer> stack = new Stack<Integer>();
+        char[] sToChar = s.toCharArray();
+        for(char c : sToChar){
+            if(stack.size() > 0 && stack.peek() + charToInt[c] == 0){
+                stack.pop();
+            }else{
+                stack.push(charToInt[c]);
+            }
+        }
+        return stack.size() == 0;
+    }
+
+    public boolean isValid_2(String s){
+        int[] charToInt = new int[128];
+        int[] stack = new int[s.length()];
+        int currSize = -1;
+        charToInt['('] = 1;
+        charToInt[')'] = -1;
+        charToInt['{'] = 2;
+        charToInt['}'] = -2;
+        charToInt['['] = 3;
+        charToInt[']'] = -3;
+        char[] sToChar = s.toCharArray();
+        for(char c : sToChar){
+            if(stack[currSize] + charToInt[c] == 0){
+                currSize--;
+            }else{
+                stack[currSize++] = charToInt[c];
+            }
+        }
+        System.out.println("currSize: " + currSize);
+        return currSize == 0;
+    }
+
+    /**
+     * LeetCode 19: 删除列表从尾部数第n个元素（n合法）
+     * @param head 列表头节点
+     * @param n 倒数第n个数
+     * @return 返回删除倒数第n个元素后的列表的头节点
+     */
+    public ListNode removeNthFromEnd(ListNode head, int n){
+        ListNode delNode = head;
+        int len = 0;
+        while(delNode != null){
+            delNode = delNode.next;
+            len++;
+        }
+        int delIndex = len - n;
+        if(delIndex <= 0){
+            head = head.next;
+            return head;
+        }else{
+            ListNode currNode = head;
+            delNode = head.next;
+            while(delIndex > 1){
+                delNode = delNode.next;
+                currNode = currNode.next;
+                delIndex--;
+            }
+            if(delNode.next == null){
+                currNode.next = null;
+            }else{
+                currNode.next = delNode.next;
+            }
+            return head;
+        }
+    }
+
+    /**
+     * 对于给定的整数数组，在该数组s中找到三个数，使得这三个数的和最接近目标数
+     * @param num 输入数组
+     * @param target 目标数
+     * @return 找到的三个这样数的和
+     */
+    public int threeSumClosest(int[] num, int target){      //超时
+        int size = num.length;
+        Set<Integer> set = new TreeSet<Integer>();
+        int tmpSize = size * (size - 1) / 2;
+        int[] tmp = new int[tmpSize];
+        for(int row = 0; row < size; row++){
+            for(int col = 0; col < row; col++){
+                tmp[row * (row - 1) / 2 + col] = num[row] + num[col];
+            }
+        }
+        int row, col, bigger, t;
+        int min = Math.abs(num[0] + num[1] + num[2] - target);
+        int result = num[0] + num[1] + num[2];
+        for(int i = 0; i < tmpSize; i++){
+            row = (int) ((1 + Math.sqrt(1 + 8 * i)) / 2);
+            col = i - row * (row - 1) / 2;
+            bigger = row > col ? row : col;
+            for(int j = bigger + 1; j < size; j++){
+                t = Math.abs(tmp[i] + num[j] - target);
+                if(t < min){
+                    result = tmp[i] + num[j];
+                    min = t;
+                }
+            }
+        }
+        return result;
+    }
+
+    /**
+     * LeetCode : Give an array, every element appears twice except one, find it.
+     * @param A Input array
+     * @return The number which appears once
+     */
+    public int singleNumber(int[] A){
+        int result = A[0];
+        int len = A.length;
+        for(int i = 1; i < len; i++){
+            result = result ^ A[i];
+        }
+        return result;
+    }
+
+    /**
+     * LeetCode : Give an array, every element appears three times except one, find it.
+     * @param A Input array
+     * @return The number which appears once
+     */
+    public int singleNumber2(int[] A){
+        int len = A.length;
+        long sum = 0;
+        Set<Integer> set = new HashSet<Integer>(2 * len);
+        for(int i = 0; i < len; i++){
+            sum += A[i];
+            set.add(A[i]);
+        }
+        long sum2 = 0;
+        for(int i : set){
+            sum2 += i;
+        }
+        return (int)((sum2 * 3 - sum) / 2);
+    }
+
+    public int singleNumber2_2(int[] A){
+        int result = 0;
+        int len = A.length;
+        int bit;
+        for(int i = 0; i < 32; i++){
+            bit = 0;
+            for(int j = 0; j < len; j++){
+                bit += (A[j] >> i) & 1;
+            }
+            bit = bit % 3;
+            result |= bit << i;
+        }
+        return result;
+    }
+
+
+    }
