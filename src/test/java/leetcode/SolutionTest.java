@@ -2,6 +2,8 @@ package leetcode;
 
 import junit.framework.TestCase;
 
+import java.util.List;
+
 public class SolutionTest extends TestCase {
     Solution solution;
 
@@ -158,14 +160,14 @@ public class SolutionTest extends TestCase {
     }
 
     public void testRomanToInt2(){
-        assertEquals(1, solution.romanToInt("I"));
-        assertEquals(10, solution.romanToInt("X"));
-        assertEquals(18, solution.romanToInt("XVIII"));
-        assertEquals(19, solution.romanToInt("XIX"));
-        assertEquals(45, solution.romanToInt("XLV"));
-        assertEquals(199, solution.romanToInt("CXCIX"));
-        assertEquals(1880, solution.romanToInt("MDCCCLXXX"));
-        assertEquals(3333, solution.romanToInt("MMMCCCXXXIII"));
+        assertEquals(1, solution.romanToInt2("I"));
+        assertEquals(10, solution.romanToInt2("X"));
+        assertEquals(18, solution.romanToInt2("XVIII"));
+        assertEquals(19, solution.romanToInt2("XIX"));
+        assertEquals(45, solution.romanToInt2("XLV"));
+        assertEquals(199, solution.romanToInt2("CXCIX"));
+        assertEquals(1880, solution.romanToInt2("MDCCCLXXX"));
+        assertEquals(3333, solution.romanToInt2("MMMCCCXXXIII"));
     }
 
     public void testLongestCommonPrefix(){
@@ -187,19 +189,19 @@ public class SolutionTest extends TestCase {
     }
 
     public void testThreeSum(){
-//        int[] num = {-1, 0, 1, 2, -1, -4};
-//        solution.threeSum(num);
-//        int[] num2 = {2,13,-2,-5,-1,10,6,-8,5,-5,7,-5,-14,-4,-5,10,-15,-2,-14,-6,10,6,-14,-14,-9,-11,8,-3,-2,12,-9,-14,3,5,-12,-13,-8,1,-14,12,12,0,14,5,4,-14,-8,4,-9,-7,14,-13,6,7,-12,5,12,11,-13,-5,0,-6,-12,-12,6,13,12,13,0,5,2,-11,13,1,9,2,2,-14,13,8,-14,4,2,8,-3,-3,-10,-14,-15,14,-12,1,-15,14,-4,6,12,-6,-4,-3,6,5};
-//        solution.threeSum(num2);
-//
-//        int[] num3 = {-5,14,1,-2,11,11,-10,3,-6,0,3,-4,-9,-13,-8,-7,9,8,-7,11,12,-7,4,-7,-1,-5,13,1,-2,8,-13,0,-1,3,13,-13,-1,10,5,1,-13,-15,12,-7,-13,-11,-7,3,13,1,0,2,1,11,10,8,-8,1,-14,-3,-6,-12,12,0,6,2,2,-9,-3,14,-1,-9,14,-4,-1,8,-8,7,-4,12,-14,3,-9,2,0,-13,-13,-1,3,-12,11,4,-9,8,11,5,-5,-10,3,-1,-11,-13,5,-12,-10,11,11,-3,-5,14,-13,-4,-5,-7,6,2,-13,0,8,-3,4,4,-14,2};
-//        solution.threeSum(num3);
-//
-//        int[] num4 = {-5,-1,10,-15,10,-11,-8,-14,5,3,9,3,-11,-4,0,5,5,1,14,2,-13,0,-10,-12,-2,4,-9,-7,14,-2,3,-6,13,-10,-14,8,-14,-15,1,7,4,-5,-13,8,-1,-6,-10,-11,10,11,6,13,-4,11,-14,1,1,14,9,-8,-2,-11,1,-12,-14,-6,3,10,-6,-11,-6,5,-9,-4,-10,5,5,-5,1,1,13,-8,-1,-14,-11,-8,2,-3,-9,-12,4,4,14,12,-1,8,-9,-13,3,0,13,12,-9,12,-7,-12,2,5,-1,-11};
-//        solution.threeSum(num4);
-//
-//        int[] num5 = {7,-1,14,-12,-8,7,2,-15,8,8,-8,-14,-4,-5,7,9,11,-4,-15,-6,1,-14,4,3,10,-5,2,1,6,11,2,-2,-5,-7,-6,2,-15,11,-6,8,-4,2,1,-1,4,-6,-15,1,5,-15,10,14,9,-8,-6,4,-6,11,12,-15,7,-1,-9,9,-1,0,-4,-1,-12,-2,14,-9,7,0,-3,-4,1,-2,12,14,-10,0,5,14,-1,14,3,8,10,-8,8,-5,-2,6,-11,12,13,-7,-12,8,6,-13,14,-2,-5,-11,1,3,-6};
-//        solution.threeSum(num5);
+        int[] num = {-1, 0, 1, 2, -1, -4};
+        solution.threeSum(num);
+        int[] num2 = {2,13,-2,-5,-1,10,6,-8,5,-5,7,-5,-14,-4,-5,10,-15,-2,-14,-6,10,6,-14,-14,-9,-11,8,-3,-2,12,-9,-14,3,5,-12,-13,-8,1,-14,12,12,0,14,5,4,-14,-8,4,-9,-7,14,-13,6,7,-12,5,12,11,-13,-5,0,-6,-12,-12,6,13,12,13,0,5,2,-11,13,1,9,2,2,-14,13,8,-14,4,2,8,-3,-3,-10,-14,-15,14,-12,1,-15,14,-4,6,12,-6,-4,-3,6,5};
+        solution.threeSum(num2);
+
+        int[] num3 = {-5,14,1,-2,11,11,-10,3,-6,0,3,-4,-9,-13,-8,-7,9,8,-7,11,12,-7,4,-7,-1,-5,13,1,-2,8,-13,0,-1,3,13,-13,-1,10,5,1,-13,-15,12,-7,-13,-11,-7,3,13,1,0,2,1,11,10,8,-8,1,-14,-3,-6,-12,12,0,6,2,2,-9,-3,14,-1,-9,14,-4,-1,8,-8,7,-4,12,-14,3,-9,2,0,-13,-13,-1,3,-12,11,4,-9,8,11,5,-5,-10,3,-1,-11,-13,5,-12,-10,11,11,-3,-5,14,-13,-4,-5,-7,6,2,-13,0,8,-3,4,4,-14,2};
+        solution.threeSum(num3);
+
+        int[] num4 = {-5,-1,10,-15,10,-11,-8,-14,5,3,9,3,-11,-4,0,5,5,1,14,2,-13,0,-10,-12,-2,4,-9,-7,14,-2,3,-6,13,-10,-14,8,-14,-15,1,7,4,-5,-13,8,-1,-6,-10,-11,10,11,6,13,-4,11,-14,1,1,14,9,-8,-2,-11,1,-12,-14,-6,3,10,-6,-11,-6,5,-9,-4,-10,5,5,-5,1,1,13,-8,-1,-14,-11,-8,2,-3,-9,-12,4,4,14,12,-1,8,-9,-13,3,0,13,12,-9,12,-7,-12,2,5,-1,-11};
+        solution.threeSum(num4);
+
+        int[] num5 = {7,-1,14,-12,-8,7,2,-15,8,8,-8,-14,-4,-5,7,9,11,-4,-15,-6,1,-14,4,3,10,-5,2,1,6,11,2,-2,-5,-7,-6,2,-15,11,-6,8,-4,2,1,-1,4,-6,-15,1,5,-15,10,14,9,-8,-6,4,-6,11,12,-15,7,-1,-9,9,-1,0,-4,-1,-12,-2,14,-9,7,0,-3,-4,1,-2,12,14,-10,0,5,14,-1,14,3,8,10,-8,8,-5,-2,6,-11,12,13,-7,-12,8,6,-13,14,-2,-5,-11,1,3,-6};
+        solution.threeSum(num5);
 
         int[] num6 = {0,0,0};
         solution.threeSum(num6);
@@ -221,5 +223,109 @@ public class SolutionTest extends TestCase {
 
         int[] num6 = {0,0,0};
         solution.threeSum_2(num6);
+    }
+
+    public void testIsValid(){
+        assertEquals(true, solution.isValid("()"));
+        assertEquals(true, solution.isValid("([])"));
+        assertEquals(true, solution.isValid("()[]{}"));
+        assertEquals(true, solution.isValid("()[{}]"));
+        assertEquals(true, solution.isValid("({[][]})"));
+        assertEquals(false, solution.isValid("("));
+        assertEquals(false, solution.isValid("(]"));
+        assertEquals(false, solution.isValid("([]}"));
+        assertEquals(false, solution.isValid("({}]]"));
+    }
+
+    public void testIsValid_2(){
+        assertEquals(true, solution.isValid_2("()"));
+        assertEquals(true, solution.isValid_2("([])"));
+        assertEquals(true, solution.isValid_2("()[]{}"));
+        assertEquals(true, solution.isValid_2("()[{}]"));
+        assertEquals(true, solution.isValid_2("({[][]})"));
+        assertEquals(false, solution.isValid_2("("));
+        assertEquals(false, solution.isValid_2("(]"));
+        assertEquals(false, solution.isValid_2("([]}"));
+        assertEquals(false, solution.isValid_2("({}]]"));
+    }
+
+    public void testRemoveNthNodeFromEnd(){
+        int[] arr = {2,3,6,4,1,4,5};
+        ListNode head = TestTools.createList(arr);
+        TestTools.printList(head);
+        solution.removeNthFromEnd(head, 2);
+        TestTools.printList(head);
+
+        System.out.println();
+
+        int[] arr2 = {1, 2};
+        ListNode head2 = TestTools.createList(arr2);
+        TestTools.printList(head2);
+        head2 = solution.removeNthFromEnd(head2, 2);
+        TestTools.printList(head2);
+
+        System.out.println();
+
+        int[] arr3 = {1};
+        ListNode head3 = TestTools.createList(arr3);
+        TestTools.printList(head3);
+        head3 = solution.removeNthFromEnd(head3, 1);
+        TestTools.printList(head3);
+        System.out.println();
+
+        int[] arr4 = {1, 2};
+        ListNode head4 = TestTools.createList(arr4);
+        TestTools.printList(head4);
+        head4 = solution.removeNthFromEnd(head4, 1);
+        TestTools.printList(head4);
+
+    }
+
+    public void testThreeSumClosest(){
+        int[] num1 = {-1, 2, 1, -4};
+        assertEquals(2, solution.threeSumClosest(num1, 1));
+        int[] num2 = {-8, 2,3,4,8, 0};
+        assertEquals(2, solution.threeSumClosest(num2, 1));
+        int[] num3 = {43,75,-90,47,-49,72,17,-31,-68,-22,-21,-30,65,88,-75,23,97,-61,53,87,-3,33,20,51,-79,43,80,-9,34,-89,-7,93,43,55,-94,29,-32,-49,25,72,-6,35,53,63,6,-62,-96,-83,-73,66,-11,96,-90,-27,78,-51,79,35,-63,85,-82,-15,100,-82,1,-4,-41,-21,11,12,12,72,-82,-22,37,47,-18,61,60,55,22,-6,26,-60,-42,-92,68,45,-1,-26,5,-56,-1,73,92,-55,-20,-43,-56,-15,7,52,35,-90,63,41,-55,-58,46,-84,-92,17,-66,-23,96,-19,-44,77,67,-47,-48,99,51,-25,19,0,-13,-88,-10,-67,14,7,89,-69,-83,86,-70,-66,-38,-50,66,0,-67,-91,-65,83,42,70,-6,52,-21,-86,-87,-44,8,49,-76,86,-3,87,-32,81,-58,37,-55,19,-26,66,-89,-70,-69,37,0,19,-65,38,7,3,1,-96,96,-65,-52,66,5,-3,-87,-16,-96,57,-74,91,46,-79,0,-69,55,49,-96,80,83,73,56,22,58,-44,-40,-45,95,99,-97,-22,-33,-92,-51,62,20,70,90};
+        assertEquals(284, solution.threeSumClosest(num3, 284));
+        int[] num4 = {43,75,-90,47,-49,72};
+        assertEquals(194, solution.threeSumClosest(num4, 284));
+
+        System.out.println("END");
+    }
+
+    public void testSingleNumber(){
+        int[] a1 = {1,2,3,4,3,2,1};
+        assertEquals(4, solution.singleNumber(a1));
+        int[] a2 = {1};
+        assertEquals(1, solution.singleNumber(a2));
+    }
+
+    public void testSingleNumber2(){
+        int[] a1 = {1,2,3,4,3,2,1, 1, 2,3};
+        assertEquals(4, solution.singleNumber2(a1));
+        int[] a2 = {1};
+        assertEquals(1, solution.singleNumber2(a2));
+    }
+
+    public void testSingleNumber2_2(){
+        int[] a1 = {1,2,3,4,3,2,1, 1, 2,3};
+        assertEquals(4, solution.singleNumber2_2(a1));
+        int[] a2 = {1};
+        assertEquals(1, solution.singleNumber2_2(a2));
+    }
+
+    public void testCompareVersion(){
+        assertEquals(0, solution.compareVersion("01", "1"));
+        assertEquals(0, solution.compareVersion("1.0", "1"));
+        assertEquals(0, solution.compareVersion("2.2.0", "2.2"));
+        assertEquals(0, solution.compareVersion("1.1", "1.1"));
+        assertEquals(-1, solution.compareVersion("1.1", "1.2"));
+        assertEquals(-1, solution.compareVersion("1.0", "1.1"));
+        assertEquals(1, solution.compareVersion("1.5", "1.1"));
+        assertEquals(1, solution.compareVersion("2.1", "1.1"));
+        assertEquals(1, solution.compareVersion("1.1.2", "1.1"));
+        assertEquals(0, solution.compareVersion("1.1.2.3.5", "1.1.2.3.5"));
+        assertEquals(-1, solution.compareVersion("1.1.2.3.5", "1.1.3.3.5"));
     }
 }

@@ -4,11 +4,11 @@ import java.math.BigInteger;
 import java.util.*;
 
 /**
- * Created by yize on 2014/12/29 to solve LeetCode OJ.
+ * yi ze on 2014/12/29 to solve LeetCode OJ.
  */
 public class Solution {
     /**
-     * leetcode 171: 将Excel Sheet的表头转换成数字，如A->1, B->2, ..., AA->26, AB->27.
+     * Problem 171: 将Excel Sheet的表头转换成数字，如A->1, B->2, ..., AA->26, AB->27.
      *
      * @param s: 代表Excel表头的字符串
      * @return 返回Excel表头对应的整数
@@ -24,7 +24,7 @@ public class Solution {
     }
 
     /**
-     * leetcode 169: 找出整数数组中的主元素(数组长度为n，则主元素的个数多于⌊n/2⌋)
+     * Problem 169: 找出整数数组中的主元素(数组长度为n，则主元素的个数多于⌊n/2⌋)
      *
      * @param num: 输入数组
      * @return 返回输入数组的主元素
@@ -47,7 +47,7 @@ public class Solution {
     }
 
     /**
-     * LeetCode 168: 将给定的正数转换为Excel列表表头的形式，如1->A, 26 -> Z, 28 -> AB.
+     * Problem 168: 将给定的正数转换为Excel列表表头的形式，如1->A, 26 -> Z, 28 -> AB.
      *
      * @param n 输入正数
      * @return 返回n对应的Excel表头.
@@ -70,7 +70,7 @@ public class Solution {
     }
 
     /**
-     * LeetCode 172: 给一个整数，返回该数的阶乘尾数的零的个数。(对数时间复杂度)
+     * Problem 172: 给一个整数，返回该数的阶乘尾数的零的个数。(对数时间复杂度)
      *
      * @param n: 输入整数
      * @return n!的尾数中零的个数
@@ -88,7 +88,7 @@ public class Solution {
     }
 
     /**
-     * LeetCode 172: 给一个整数，返回该数的阶乘尾数的零的个数。
+     * Problem 172: 给一个整数，返回该数的阶乘尾数的零的个数。
      *
      * @param n: 输入整数
      * @return n!的尾数中零的个数
@@ -110,7 +110,7 @@ public class Solution {
     }
 
     /**
-     * LeetCode 8: 将字符串转换成整数。(注意空字符，非数字符，溢出等)
+     * Problem 8: 将字符串转换成整数。(注意空字符，非数字符，溢出等)
      *
      * @param str 整数字符串
      * @return 整数
@@ -151,7 +151,7 @@ public class Solution {
     }
 
     /**
-     * Leetcode 1: 找出整数数组中两个数的和等于目标值的索引。(假定输入有且仅有一种结果)
+     * Problem 1: 找出整数数组中两个数的和等于目标值的索引。(假定输入有且仅有一种结果)
      *
      * @param numbers: 输入数组
      * @param target:  目标值
@@ -195,7 +195,7 @@ public class Solution {
     }
 
     /**
-     * Leetcode 6: 以之字形转换字符串
+     * Problem 6: 以之字形转换字符串
      *
      * @param s:     待转换的字符串
      * @param nRows: 之字的行数
@@ -241,7 +241,7 @@ public class Solution {
     }
 
     /**
-     * Leetcode 7: 反转整数
+     * Problem 7: 反转整数
      *
      * @param x: 输入的整数
      * @return 反转后的整数
@@ -269,7 +269,7 @@ public class Solution {
     }
 
     /**
-     * LeetCode 9: 判断回文数
+     * Problem 9: 判断回文数
      *
      * @param x: 输入整数
      * @return 若x是回文数返回true, 否则返回false.
@@ -290,7 +290,8 @@ public class Solution {
     }
 
     /**
-     * LeetCode 13: 将罗马数字的字符串转换成整数
+     * Problem 13: 将罗马数字的字符串转换成整数
+     *
      * @param s 罗马数字的字符串
      * @return s对应的整数
      */
@@ -377,7 +378,7 @@ public class Solution {
     }
 
     /**
-     * LeetCode 14: 找出字符串数组中各字符串的最长公共前缀
+     * Problem 14: 找出字符串数组中各字符串的最长公共前缀
      *
      * @param strs 字符串数组
      * @return 公共前缀
@@ -432,7 +433,7 @@ public class Solution {
                 negative.add(i);
             } else {
                 positive.add(i);
-                if(i == 0){
+                if (i == 0) {
                     countZero++;
                 }
             }
@@ -441,7 +442,7 @@ public class Solution {
         int positiveSize = positive.size();
         int negativeSize = negative.size();
 
-        if(countZero >= 3){
+        if (countZero >= 3) {
             List<Integer> list = new ArrayList<Integer>(3);
             list.add(0);
             list.add(0);
@@ -495,20 +496,20 @@ public class Solution {
                 negative.add(i);
             } else {
                 positive.add(i);
-                if(i == 0){
+                if (i == 0) {
                     countZero++;
                 }
             }
         }
 
         BitSet positiveBitSet = new BitSet();
-        BitSet netativeBitSet = new BitSet();
+        BitSet negativeBitSet = new BitSet();
 
-        for(int i : positive){
+        for (int i : positive) {
             positiveBitSet.set(i);
         }
-        for(int i : negative){
-            netativeBitSet.set(i * -1);
+        for (int i : negative) {
+            negativeBitSet.set(i * -1);
         }
 
         int positiveSize = positive.size();
@@ -517,7 +518,7 @@ public class Solution {
         int tmp;
         List<Integer> list;
 
-        if(countZero >= 3){
+        if (countZero >= 3) {
             list = new ArrayList<Integer>(3);
             list.add(0);
             list.add(0);
@@ -527,13 +528,13 @@ public class Solution {
         for (int i = 0; i < positiveSize; i++) {
             for (int j = 0; j < positiveSize; j++) {
                 tmp = positive.get(i) + positive.get(j);
-                if(netativeBitSet.get(tmp) && i != j){
+                if (negativeBitSet.get(tmp) && i != j) {
                     list = new ArrayList<Integer>();
                     list.add(tmp * -1);
-                    if(positive.get(i) < positive.get(j)){
+                    if (positive.get(i) < positive.get(j)) {
                         list.add(positive.get(i));
                         list.add(positive.get(j));
-                    }else{
+                    } else {
                         list.add(positive.get(j));
                         list.add(positive.get(i));
                     }
@@ -545,12 +546,12 @@ public class Solution {
         for (int i = 0; i < negativeSize; i++) {
             for (int j = 0; j < negativeSize; j++) {
                 tmp = (negative.get(i) + negative.get(j)) * -1;
-                if(positiveBitSet.get(tmp) && i != j){
+                if (positiveBitSet.get(tmp) && i != j) {
                     list = new ArrayList<Integer>();
-                    if(negative.get(i) < negative.get(j)){
+                    if (negative.get(i) < negative.get(j)) {
                         list.add(negative.get(i));
                         list.add(negative.get(j));
-                    }else{
+                    } else {
                         list.add(negative.get(j));
                         list.add(negative.get(i));
                     }
@@ -568,11 +569,12 @@ public class Solution {
     }
 
     /**
-     * LeetCode 20: 判断输入括号是否是合法的
+     * Problem 20: 判断输入括号是否是合法的
+     *
      * @param s 输入括号
      * @return 若为合法括号返回true，否则返回false
      */
-    public boolean isValid(String s){
+    public boolean isValid(String s) {
         int[] charToInt = new int[128];
         charToInt['('] = 1;
         charToInt[')'] = -1;
@@ -582,17 +584,17 @@ public class Solution {
         charToInt[']'] = -3;
         Stack<Integer> stack = new Stack<Integer>();
         char[] sToChar = s.toCharArray();
-        for(char c : sToChar){
-            if(stack.size() > 0 && stack.peek() + charToInt[c] == 0){
+        for (char c : sToChar) {
+            if (stack.size() > 0 && stack.peek() + charToInt[c] == 0) {
                 stack.pop();
-            }else{
+            } else {
                 stack.push(charToInt[c]);
             }
         }
         return stack.size() == 0;
     }
 
-    public boolean isValid_2(String s){
+    public boolean isValid_2(String s) {
         int[] charToInt = new int[128];
         int[] stack = new int[s.length()];
         int currSize = -1;
@@ -603,10 +605,10 @@ public class Solution {
         charToInt['['] = 3;
         charToInt[']'] = -3;
         char[] sToChar = s.toCharArray();
-        for(char c : sToChar){
-            if(stack[currSize] + charToInt[c] == 0){
+        for (char c : sToChar) {
+            if (stack[currSize] + charToInt[c] == 0) {
                 currSize--;
-            }else{
+            } else {
                 stack[currSize++] = charToInt[c];
             }
         }
@@ -615,33 +617,34 @@ public class Solution {
     }
 
     /**
-     * LeetCode 19: 删除列表从尾部数第n个元素（n合法）
+     * Problem 19: 删除列表从尾部数第n个元素（n合法）
+     *
      * @param head 列表头节点
-     * @param n 倒数第n个数
+     * @param n    倒数第n个数
      * @return 返回删除倒数第n个元素后的列表的头节点
      */
-    public ListNode removeNthFromEnd(ListNode head, int n){
+    public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode delNode = head;
         int len = 0;
-        while(delNode != null){
+        while (delNode != null) {
             delNode = delNode.next;
             len++;
         }
         int delIndex = len - n;
-        if(delIndex <= 0){
+        if (delIndex <= 0) {
             head = head.next;
             return head;
-        }else{
+        } else {
             ListNode currNode = head;
             delNode = head.next;
-            while(delIndex > 1){
+            while (delIndex > 1) {
                 delNode = delNode.next;
                 currNode = currNode.next;
                 delIndex--;
             }
-            if(delNode.next == null){
+            if (delNode.next == null) {
                 currNode.next = null;
-            }else{
+            } else {
                 currNode.next = delNode.next;
             }
             return head;
@@ -649,31 +652,32 @@ public class Solution {
     }
 
     /**
-     * 对于给定的整数数组，在该数组s中找到三个数，使得这三个数的和最接近目标数
-     * @param num 输入数组
+     * Problem 16: 对于给定的整数数组，在该数组s中找到三个数，使得这三个数的和最接近目标数
+     *
+     * @param num    输入数组
      * @param target 目标数
      * @return 找到的三个这样数的和
      */
-    public int threeSumClosest(int[] num, int target){      //超时
+    public int threeSumClosest(int[] num, int target) {      //超时
         int size = num.length;
-        Set<Integer> set = new TreeSet<Integer>();
+//        Set<Integer> set = new TreeSet<Integer>();
         int tmpSize = size * (size - 1) / 2;
         int[] tmp = new int[tmpSize];
-        for(int row = 0; row < size; row++){
-            for(int col = 0; col < row; col++){
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < row; col++) {
                 tmp[row * (row - 1) / 2 + col] = num[row] + num[col];
             }
         }
         int row, col, bigger, t;
         int min = Math.abs(num[0] + num[1] + num[2] - target);
         int result = num[0] + num[1] + num[2];
-        for(int i = 0; i < tmpSize; i++){
+        for (int i = 0; i < tmpSize; i++) {
             row = (int) ((1 + Math.sqrt(1 + 8 * i)) / 2);
             col = i - row * (row - 1) / 2;
             bigger = row > col ? row : col;
-            for(int j = bigger + 1; j < size; j++){
+            for (int j = bigger + 1; j < size; j++) {
                 t = Math.abs(tmp[i] + num[j] - target);
-                if(t < min){
+                if (t < min) {
                     result = tmp[i] + num[j];
                     min = t;
                 }
@@ -683,47 +687,48 @@ public class Solution {
     }
 
     /**
-     * LeetCode : Give an array, every element appears twice except one, find it.
+     * Problem 136: Give an array, every element appears twice except one, find it.
+     *
      * @param A Input array
      * @return The number which appears once
      */
-    public int singleNumber(int[] A){
+    public int singleNumber(int[] A) {
         int result = A[0];
         int len = A.length;
-        for(int i = 1; i < len; i++){
+        for (int i = 1; i < len; i++) {
             result = result ^ A[i];
         }
         return result;
     }
 
     /**
-     * LeetCode : Give an array, every element appears three times except one, find it.
+     * Problem 137: Give an array, every element appears three times except one, find it.
+     *
      * @param A Input array
      * @return The number which appears once
      */
-    public int singleNumber2(int[] A){
+    public int singleNumber2(int[] A) {
         int len = A.length;
         long sum = 0;
         Set<Integer> set = new HashSet<Integer>(2 * len);
-        for(int i = 0; i < len; i++){
-            sum += A[i];
-            set.add(A[i]);
+        for (int i : A) {
+            sum += i;
+            set.add(i);
         }
         long sum2 = 0;
-        for(int i : set){
+        for (int i : set) {
             sum2 += i;
         }
-        return (int)((sum2 * 3 - sum) / 2);
+        return (int) ((sum2 * 3 - sum) / 2);
     }
 
-    public int singleNumber2_2(int[] A){
+    public int singleNumber2_2(int[] A) {
         int result = 0;
-        int len = A.length;
         int bit;
-        for(int i = 0; i < 32; i++){
+        for (int i = 0; i < 32; i++) {
             bit = 0;
-            for(int j = 0; j < len; j++){
-                bit += (A[j] >> i) & 1;
+            for (int j : A){
+                bit += (j >> i) & 1;
             }
             bit = bit % 3;
             result |= bit << i;
@@ -731,5 +736,44 @@ public class Solution {
         return result;
     }
 
-
+    /**
+     * Problem 165: 比较两个版本号的大小
+     * @param version1 版本号1
+     * @param version2 版本号2
+     * @return 若version1>version2则返回1，version1<version2返回-1，否则返回0.
+     */
+    public int compareVersion(String version1, String version2){
+        String[] strs1 = version1.split("\\.");
+        String[] strs2 = version2.split("\\.");
+        int len1 = strs1.length;
+        int len2 = strs2.length;
+        int max = len1 > len2 ? len1 : len2;
+        int[] v1 = new int[max];
+        int[] v2 = new int[max];
+        for(int i = 0; i < len1; i++){
+            v1[i] = Integer.valueOf(strs1[i]);
+        }
+        for(int i = 0; i < len2; i++){
+            v2[i] = Integer.valueOf(strs2[i]);
+        }
+        int off = 0;
+        while(off < max){
+            if(v1[off] == v2[off]){
+                off++;
+            }else if(v1[off] > v2[off]){
+                return 1;
+            }else if(v1[off] < v2[off]){
+                return -1;
+            }
+        }
+        return 0;
     }
+
+
+
+
+
+
+
+
+}
