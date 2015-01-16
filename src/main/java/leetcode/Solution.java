@@ -769,11 +769,53 @@ public class Solution {
         return 0;
     }
 
+    /**
+     * Problem 26: For a sorted array, count its elements number after remove the duplicates.
+     * @param A sorted array
+     * @return element number
+     */
+    public int removeDuplicates(int[] A){
+        int len = A.length;
+        if(len < 1){
+            return 0;
+        }
+        int countedNumber = A[0] == 0 ? -1 : 0;
+        int aheadNumber;
+        int off = 0;
+        int count = 0;
+        while(off < len){
+            aheadNumber = A[off];
+            if(countedNumber != aheadNumber){
+                countedNumber = aheadNumber;
+                A[count++] = countedNumber;
+            }
+            off++;
+        }
+        return count;
+    }
 
-
-
-
-
-
-
+    /**
+     * Problem 27: 删除给定数组中指定元素，返回剩余元素的个数
+     * @param A 输入数组
+     * @param elem 指定元素
+     * @return 剩余元素个数
+     */
+    public int removeElement(int[] A, int elem){
+        int left = 0;
+        int len = A.length;
+        int right = len - 1;
+        while(left <= right){
+            while(left < len && A[left] != elem){
+                left++;
+            }
+            while(right >= 0 && A[right] == elem){
+                right--;
+            }
+            if(left < right){
+                A[left++] = A[right];
+                A[right--] = elem;
+            }
+        }
+        return left;
+    }
 }

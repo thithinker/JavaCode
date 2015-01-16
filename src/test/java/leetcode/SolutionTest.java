@@ -328,4 +328,28 @@ public class SolutionTest extends TestCase {
         assertEquals(0, solution.compareVersion("1.1.2.3.5", "1.1.2.3.5"));
         assertEquals(-1, solution.compareVersion("1.1.2.3.5", "1.1.3.3.5"));
     }
+
+    public void testRemoveDuplicates(){
+        assertEquals(0, solution.removeDuplicates(new int[]{}));
+        assertEquals(1, solution.removeDuplicates(new int[]{0}));
+
+        assertEquals(3, solution.removeDuplicates(new int[]{1, 2,2,3}));
+        assertEquals(2, solution.removeDuplicates(new int[]{1, 3}));
+        assertEquals(5, solution.removeDuplicates(new int[]{1, 2,2,2,2,2,4,4,5,5,5,7}));
+        assertEquals(3, solution.removeDuplicates(new int[]{1, 2,3,3,3,3,3}));
+        assertEquals(2, solution.removeDuplicates(new int[]{1,1,1,1,1,1,3}));
+    }
+
+    public void testRemoveElement(){
+        assertEquals(0, solution.removeElement(new int[]{}, 1));
+        assertEquals(0, solution.removeElement(new int[]{1}, 1));
+        assertEquals(1, solution.removeElement(new int[]{2}, 1));
+        assertEquals(0, solution.removeElement(new int[]{1,1,1}, 1));
+        assertEquals(4, solution.removeElement(new int[]{1,2,3,3,1,1,4}, 1));
+        assertEquals(3, solution.removeElement(new int[]{2,3,2}, 1));
+        assertEquals(1, solution.removeElement(new int[]{2,3,2}, 2));
+        assertEquals(2, solution.removeElement(new int[]{2,3,2}, 3));
+        assertEquals(8, solution.removeElement(new int[]{1,2,3,2,3,5,2,7,2,6,8,4,2}, 2));
+        assertEquals(7, solution.removeElement(new int[]{2,2,3,2,3,5,2,7,2,6,8,4,2}, 2));
+    }
 }
