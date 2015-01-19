@@ -428,7 +428,60 @@ public class SolutionTest extends TestCase {
         assertEquals("111221", solution.countAndSay(5));
         assertEquals("312211", solution.countAndSay(6));
         //33的结果已有9898个字符
-        assertEquals("312211", solution.countAndSay(33));
-
+        assertEquals("", solution.countAndSay(33));
     }
+
+    public void testLengthOfLastWord(){
+        assertEquals(0, solution.lengthOfLastWord(""));
+        assertEquals(0, solution.lengthOfLastWord(" "));
+        assertEquals(1, solution.lengthOfLastWord("a "));
+        assertEquals(5, solution.lengthOfLastWord("Hello World"));
+        assertEquals(5, solution.lengthOfLastWord("Hello"));
+    }
+
+    public void testLengthOfLastWord_2(){
+        assertEquals(0, solution.lengthOfLastWord(""));
+        assertEquals(0, solution.lengthOfLastWord(" "));
+        assertEquals(1, solution.lengthOfLastWord("a "));
+        assertEquals(5, solution.lengthOfLastWord("Hello World"));
+        assertEquals(5, solution.lengthOfLastWord("Hello"));
+        assertEquals(2, solution.lengthOfLastWord("b af "));
+    }
+
+    public void testAddBinary(){
+        assertEquals("1", solution.addBinary("1", "0"));
+        assertEquals("10", solution.addBinary("1", "1"));
+        assertEquals("1001", solution.addBinary("111", "10"));
+        assertEquals("11110", solution.addBinary("1111", "1111"));
+        assertEquals("10010", solution.addBinary("11", "1111"));
+        assertEquals("11100", solution.addBinary("11", "11001"));
+    }
+
+    public void testAddBinary_3(){
+        assertEquals("1", solution.addBinary_3("1", "0"));
+        assertEquals("10", solution.addBinary_3("1", "1"));
+        assertEquals("1001", solution.addBinary_3("111", "10"));
+        assertEquals("11110", solution.addBinary_3("1111", "1111"));
+        assertEquals("10010", solution.addBinary_3("11", "1111"));
+        assertEquals("11100", solution.addBinary_3("11", "11001"));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

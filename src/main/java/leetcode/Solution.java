@@ -1,8 +1,8 @@
 package leetcode;
 
 import java.math.BigInteger;
-import java.util.*;
 
+import java.util.*;
 /**
  * yi ze on 2014/12/29 to solve LeetCode OJ.
  */
@@ -961,9 +961,114 @@ public class Solution {
         return results[n - 1];
     }
 
+    /**
+     * Problem 58: 计算给定字符串中最后一个单词的长度
+     * @param s 输入字符串
+     * @return 最后一个单词的长度
+     */
+    public int lengthOfLastWord(String s){
+        s = s.trim();
+        int result = 0;
+        int len = s.length() - 1;
+        for (int i = len; i > -1 ; i--) {
+            if(s.charAt(i) == ' '){
+                break;
+            }
+            result++;
+        }
+        return result;
+    }
 
+    public int lengthOfLastWord_2(String s){
+        s = s.trim();
+        int len = s.length() - 1;
+        int i;
+        for(i = len; i > -1; i--){
+            if(s.charAt(i) == ' '){
+                break;
+            }
+        }
+        return len - i;
+    }
 
+    /**
+     * Problem 67: 求字符串表示的二进制的和
+     * @param a 二进制字符串
+     * @param b 二进制字符串
+     * @return a与b的和
+     */
+    public String addBinary(String a, String b){
+        int carry = 0;
+        StringBuilder result = new StringBuilder("");
+        int lenA = a.length() - 1;
+        int lenB = b.length() - 1;
+        int tmp;
+        while(lenA > -1 && lenB > -1){
+            tmp = (a.charAt(lenA) - '0') + (b.charAt(lenB) - '0') + carry;
+            result.insert(0, tmp % 2);
+            carry = tmp / 2;
+            lenA--;
+            lenB--;
+        }
+        while(lenA > -1){
+            tmp = (a.charAt(lenA) - '0') + carry;
+            result.insert(0, tmp % 2);
+            carry = tmp / 2;
+            lenA--;
+        }
+        while(lenB > -1){
+            tmp = (b.charAt(lenB) - '0') + carry;
+            result.insert(0, tmp % 2);
+            carry = tmp / 2;
+            lenB--;
+        }
+        if(carry == 1){
+            result.insert(0, 1);
+        }
+        return result.toString();
+    }
 
+    public String addBinary_2(String a, String b){
+        int carry = 0;
+        StringBuilder result = new StringBuilder("");
+        int lenA = a.length() - 1;
+        int lenB = b.length() - 1;
+        String strLong, strShort;
+        int lenLong, lenShort;
+        if(lenA > lenB){
+            strLong = a;
+            strShort = b;
+            lenLong = lenA;
+            lenShort = lenB;
+        }else{
+            strLong = b;
+            strShort = a;
+            lenLong = lenB;
+            lenShort = lenA;
+        }
+        int tmp;
+        while(lenLong > -1 && lenShort > -1){
+            tmp = (strLong.charAt(lenLong) - '0') + (strShort.charAt(lenShort) - '0') + carry;
+            result.insert(0, tmp % 2);
+            carry = tmp / 2;
+            lenLong--;
+            lenShort--;
+        }
+        while(lenLong> -1){
+            tmp = (strLong.charAt(lenLong) - '0') + carry;
+            result.insert(0, tmp % 2);
+            carry = tmp / 2;
+            lenLong--;
+        }
+        if(carry == 1){
+            result.insert(0, 1);
+        }
+        return result.toString();
+    }
+
+    public String addBinary_3(String a, String b){
+        return new BigInteger(a, 2).add(new BigInteger(b, 2)).toString(2);
+    }
 
 
 
