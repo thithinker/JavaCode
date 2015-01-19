@@ -818,4 +818,163 @@ public class Solution {
         }
         return left;
     }
+
+    /**
+     * Problem 36:判断是否是合法数独
+     * @param board 输入二维数组作为数独
+     * @return 若board是合法数组返回True，否则返回False
+     */
+    public boolean isValidSudoku(char[][] board){
+        Set<Character> set;
+        for(int row = 0; row < 9; row++){
+            set = new HashSet<Character>(16);
+            for(int col = 0; col < 9; col++){
+                if(board[row][col] == '.'){
+                    continue;
+                }
+                if(!set.add(board[row][col])){
+                    return false;
+                }
+            }
+        }
+
+        for(int col = 0; col < 9; col++){
+            set = new HashSet<Character>(16);
+            for(int row = 0; row < 9; row++){
+                if(board[row][col] =='.'){
+                    continue;
+                }
+                if(!set.add(board[row][col])){
+                    return false;
+                }
+            }
+        }
+        int startRow, startCol;
+        for(int row = 0; row < 3; row++){
+            for(int col = 0; col < 3; col++){
+                startRow = 3 * row;
+                startCol = 3 * col;
+                set = new HashSet<Character>(16);
+                for(int innerRow = 0; innerRow < 3; innerRow++){
+                    for(int innerCol = 0; innerCol < 3; innerCol++){
+                        if(board[startRow + innerRow][startCol + innerCol] == '.'){
+                            continue;
+                        }
+                        if(!set.add(board[startRow + innerRow][startCol + innerCol])){
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    public boolean isValidSudoku_2(char[][] board){
+        int[] nums;
+        for(int row = 0; row < 9; row++){
+            nums = new int[64];
+            for(int col = 0; col < 9; col++){
+                if(board[row][col] == '.'){
+                    continue;
+                }
+                nums[board[row][col]]++;
+                if(nums[board[row][col]] > 1){
+                    return false;
+                }
+            }
+        }
+
+        for(int col = 0; col < 9; col++){
+            nums = new int[64];
+            for(int row = 0; row < 9; row++){
+                if(board[row][col] =='.'){
+                    continue;
+                }
+                nums[board[row][col]]++;
+                if(nums[board[row][col]] > 1){
+                    return false;
+                }
+            }
+        }
+        int startRow, startCol;
+        int tmpRow, tmpCol;
+        for(int row = 0; row < 3; row++){
+            for(int col = 0; col < 3; col++){
+                startRow = 3 * row;
+                startCol = 3 * col;
+                nums = new int[64];
+                for(int innerRow = 0; innerRow < 3; innerRow++){
+                    for(int innerCol = 0; innerCol < 3; innerCol++){
+                        tmpRow = startRow + innerRow;
+                        tmpCol = startCol + innerCol;
+                        if(board[tmpRow][tmpCol] == '.'){
+                            continue;
+                        }
+                        nums[board[tmpRow][tmpCol]]++;
+                        if(nums[board[tmpRow][tmpCol]] > 1){
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    String countSay(String s){
+        int len = s.length();
+        int[] tmp = new int[len];
+        int now = 0;
+        for(int i = 0; i < len; i++){
+            if(s.charAt(now) == s.charAt(i)){
+                tmp[now]++;
+            }else{
+                now = i;
+                tmp[now]++;
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < len; i++){
+            if(tmp[i] != 0){
+                sb.append(tmp[i]).append(s.charAt(i));
+            }
+        }
+        return sb.toString();
+    }
+    /**
+     * Problem 37: 可以如下读取数1的序列：1，11，21，1211，111221，312211，...。对于输入数n, 返回该序列的给定的第n个序列读数.
+     * @param n 输入
+     * @return 第n个序列，如n为1，则返回1，n为4，则返回1211.
+     */
+    public String countAndSay(int n){
+        String[] results = new String[n + 1];
+        results[0] = 1 + "";
+        int i = 0;
+        String tmp = results[0];
+        while(i < n){
+            tmp = countSay(tmp);
+            results[i + 1] = tmp;
+            i++;
+        }
+//        System.out.println("Result: " + results[n - 1]);
+        return results[n - 1];
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
