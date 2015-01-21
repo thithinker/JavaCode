@@ -466,8 +466,52 @@ public class SolutionTest extends TestCase {
         assertEquals("11100", solution.addBinary_3("11", "11001"));
     }
 
+    public void testMergeTwoLists(){
+        int[] numbers1_1 = {1,3,7};
+        int[] numbers1_2 = {2,4,8,9};
+        ListNode list1_1 = TestTools.createList(numbers1_1);
+        ListNode list1_2 = TestTools.createList(numbers1_2);
+        ListNode result1 = solution.mergeTwoLists(list1_1, list1_2);
+        TestTools.printList(result1);
 
+        int[] numbers2_1 = {1,1,3};
+        int[] numbers2_2 = {2,4,8,9};
+        ListNode list2_1 = TestTools.createList(numbers2_1);
+        ListNode list2_2 = TestTools.createList(numbers2_2);
+        ListNode result2 = solution.mergeTwoLists(list2_1, list2_2);
+        TestTools.printList(result2);
 
+        int[] numbers3_1 = {1,1,3};
+        int[] numbers3_2 = {1,1,3};
+        ListNode list3_1 = TestTools.createList(numbers3_1);
+        ListNode list3_2 = TestTools.createList(numbers3_2);
+        ListNode result3 = solution.mergeTwoLists(list3_1, list3_2);
+        TestTools.printList(result3);
+    }
+
+    public void testPlusOne(){
+        int[] r1 = solution.plusOne(new int[]{1,1,1});
+        TestTools.printArray(r1);
+        int[] r2 = solution.plusOne(new int[]{1,1,9});
+        TestTools.printArray(r2);
+        int[] r3 = solution.plusOne(new int[]{1,9,9});
+        TestTools.printArray(r3);
+        int[] r4 = solution.plusOne(new int[]{9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9});
+        TestTools.printArray(r4);
+
+    }
+
+    public void testPlusOne_2(){
+        int[] r1 = solution.plusOne_2(new int[]{1, 1, 1});
+        TestTools.printArray(r1);
+        int[] r2 = solution.plusOne_2(new int[]{1, 1, 9});
+        TestTools.printArray(r2);
+        int[] r3 = solution.plusOne_2(new int[]{1, 9, 9});
+        TestTools.printArray(r3);
+        int[] r4 = solution.plusOne_2(new int[]{9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9});
+        TestTools.printArray(r4);
+
+    }
 
 
 

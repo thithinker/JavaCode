@@ -1071,7 +1071,98 @@ public class Solution {
     }
 
 
+    /**
+     * Problem 21: 合并两个有序列表
+     * @param l1 有序列表
+     * @param l2 有序列表
+     * @return 合并后的有序列表
+     */
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2){
+        if(l1 == null){
+            return l2;
+        }
+        if(l2 == null){
+            return l1;
+        }
+        ListNode result;
+        ListNode pointer;
+        ListNode node;
+        if(l1.val > l2.val){
+            result = l2;
+            pointer = l2;
+            node = l1;
+        }else{
+            result = l1;
+            pointer = l1;
+            node = l2;
+        }
+        ListNode tmp;
+        while(node != null && pointer.next != null){
+            if(pointer.next.val > node.val){
+                tmp = node;
+                node = pointer.next;
+                pointer.next = tmp;
+                pointer = pointer.next;
+            }else{
+                pointer = pointer.next;
+            }
+        }
+        if(node != null){
+            pointer.next = node;
+        }
+        return result;
+    }
 
+    /**
+     * Problem 66: 将一个数分成各个数字，由数组存储，给给这个数加上1，返回的结果仍由数组表示
+     * @param digits 代表数的数组
+     * @return 返回数组
+     */
+    public int[] plusOne(int[] digits){
+        int len = digits.length - 1;
+        int carry = 1;      //初始代表要加的数1
+        int sum;
+        while(len > -1){
+            sum = digits[len] + carry;
+            digits[len--] = sum % 10;
+            carry = sum / 10;
+            if(carry == 0){
+                break;
+            }
+        }
+        if(carry == 1){
+            int[] result = new int[digits.length + 1];
+            System.arraycopy(digits, 0, result, 1, digits.length);
+            result[0] = 1;
+            return result;
+        }else{
+            return digits;
+        }
+    }
+
+    public int[] plusOne_2(int[] digits){
+        int len = digits.length - 1;
+        int carry = 1;      //初始代表要加的数1
+        int sum;
+        while(len > -1){
+            sum = digits[len] + carry;
+            digits[len--] = sum % 10;
+            carry = sum / 10;
+            if(carry == 0){
+                break;
+            }
+        }
+        if(carry == 1){
+            int[] result = new int[digits.length + 1];
+            result[0] = 1;
+            for(int i = 1; i < result.length; i++){
+                result[i] = digits[i - 1];
+            }
+            return result;
+        }else{
+            return digits;
+        }
+    }
 
 
 
