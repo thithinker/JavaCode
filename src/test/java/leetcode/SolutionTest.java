@@ -116,11 +116,21 @@ public class SolutionTest extends TestCase {
         for ( int i = 0; i < s.length(); i++){
             System.out.println("i = " + i + " " + solution.convert(s, i));
         }*/
-        String s = "twckwuyvbihajbmhmodminftgpdcbquupwflqfiunpuwtigfwjtgzzcfofjpyd" +
-                "jnzqysvgmiyifrrlwpwpyvqadefmvfshsrxsltbxbziiqbvosufqpwsucy" +
-                "jyfbhauesgzvfdwnloojejdkzugsrksakzbrzxwudxpjaoyocpxhycrxwz" +
-                "rpllpwlsnkqlevjwejkfxmuwvsyopxpjmbuexfwksoywkhsqqevqtpoohpd";
-        System.out.println("i = " + 15 + " " + solution.convert(s, 4));
+
+//        String s = "twckwuyvbihajbmhmodminftgpdcbquupwflqfiunpuwtigfwjtgzzcfofjpyd" +
+//                "jnzqysvgmiyifrrlwpwpyvqadefmvfshsrxsltbxbziiqbvosufqpwsucy" +
+//                "jyfbhauesgzvfdwnloojejdkzugsrksakzbrzxwudxpjaoyocpxhycrxwz" +
+//                "rpllpwlsnkqlevjwejkfxmuwvsyopxpjmbuexfwksoywkhsqqevqtpoohpd";
+//        System.out.println("i = " + 15 + " " + solution.convert(s, 4));
+
+        String s1 = "a";
+        assertEquals("a", solution.convert(s1, 2));
+        String s2 = "Apalindromeisaword,phrase,number,orothersequenceofunitsthatcanbereadthesamewayineitherdirection,withgeneralallowancesforadjustmentstopunctuationandworddividers.";
+        String expect2 = "Apalindromeisaword,phrase,number,orothersequenceofunitsthatcanbereadthesamewayineitherdirection,withgeneralallowancesforadjustmentstopunctuationandworddividers.";
+        assertEquals(expect2, solution.convert(s2, 1));
+
+        char[] chs = new char[3];
+        System.out.println(chs[0] + 1);
     }
 
     public void testReverse(){

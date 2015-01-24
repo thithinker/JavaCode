@@ -196,7 +196,6 @@ public class Solution {
 
     /**
      * Problem 6: 以之字形转换字符串
-     *
      * @param s:     待转换的字符串
      * @param nRows: 之字的行数
      * @return 转换后的字符串
@@ -207,7 +206,8 @@ public class Solution {
             return s;
         }
         int sLength = s.length();
-        int nCols = nRows * sLength / (2 * nRows - 1);
+        int t = nRows * sLength / (2 * nRows - 1);
+        int nCols = t > 0 ? t : 1;
         char[][] chs = new char[nRows][nCols];
         int currCharOffset = 0;
         boolean directDown = true;
@@ -228,11 +228,10 @@ public class Solution {
                 }
             }
         }
-
         StringBuilder stringBuilder = new StringBuilder();
         for (int row = 0; row < nRows; row++) {
             for (int col = 0; col < nCols; col++) {
-                if (Character.isLetterOrDigit(chs[row][col])) {
+                if (chs[row][col] != 0) {
                     stringBuilder.append(chs[row][col]);
                 }
             }
