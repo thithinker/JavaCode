@@ -513,8 +513,53 @@ public class SolutionTest extends TestCase {
 
     }
 
+    public void testClimbStairs(){
+        assertEquals(1, solution.climbStairs(1));
+        assertEquals(2, solution.climbStairs(2));
+        assertEquals(3, solution.climbStairs(3));
+        assertEquals(5, solution.climbStairs(4));
+        assertEquals(8, solution.climbStairs(5));
+        assertEquals(13, solution.climbStairs(6));
+    }
 
+    public void testClimbStairs_2(){
+        for(int i = 1; i < 31; i++){
+            assertEquals(solution.climbStairs(i), solution.climbStairs_2(i));
+        }
+    }
 
+    public void testDeleteDuplicates(){
+        ListNode h1 = TestTools.createList(new int[]{1,2,3,4,5});
+        ListNode r1 = solution.deleteDuplicates(h1);
+        TestTools.printList(r1);
+
+        ListNode h2 = TestTools.createList(new int[]{1,1,1,4,5});
+        ListNode r2 = solution.deleteDuplicates(h2);
+        TestTools.printList(r2);
+
+        ListNode h3 = TestTools.createList(new int[]{1,3,3,4,5, 5});
+        ListNode r3 = solution.deleteDuplicates(h3);
+        TestTools.printList(r3);
+
+        ListNode h4 = TestTools.createList(new int[]{1,1});
+        ListNode r4 = solution.deleteDuplicates(h4);
+        TestTools.printList(r4);
+
+        ListNode h5 = TestTools.createList(new int[]{});
+        ListNode r5 = solution.deleteDuplicates(h5);
+        TestTools.printList(r5);
+
+    }
+
+    public void testMerge(){
+        int[] A = {1,3,7, 9, 0,0,0,0,0,0,0,0};
+        int[] B = {2,2,3,4,5};
+        solution.merge(A, 4 , B, 5);
+        TestTools.printArray(A);
+//        int[] A = {};
+//        int[] B = {};
+//        solution.merge(A,  , B, );
+    }
 
 
 

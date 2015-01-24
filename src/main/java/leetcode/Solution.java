@@ -1164,8 +1164,80 @@ public class Solution {
         }
     }
 
+    /**
+     * Problem 70: 有n阶台阶，每次可以走一步或两步，求有多少种走法
+     * @param n 台阶数
+     * @return 总共的走法
+     */
+    public int climbStairs(int n){
+        if(n < 4){
+            return n;
+        }
+        int pre_1 = 2;
+        int pre_2 = 1;
+        int result = 0;
+        while(n-- > 2){
+            result = pre_1 + pre_2;
+            pre_2 = pre_1;
+            pre_1 = result;
+        }
+        return result;
+    }
 
+    public int climbStairs_2(int n){
+        double t = Math.sqrt(5);
+        return (int) (t * (Math.pow((1 + t) / 2, n + 1) - Math.pow((1 - t) / 2, n + 1)) / 5);
+    }
 
+    /**
+     * Problem 83: 从有序链表中删除重复元素
+     * @param head 输入有序列表头节点
+     * @return 去除重复元素后的链表
+     */
+    public ListNode deleteDuplicates(ListNode head){
+        if(head == null){
+            return head;
+        }
+        ListNode curr = head;
+        ListNode next = head;
+        while(curr != null && next != null){
+            if(curr.val == next.val){
+                next = next.next;
+                continue;
+            }
+            curr.next = next;
+            curr = next;
+            next = next.next;
+        }
+        curr.next = null;
+        return head;
+    }
+
+    /**
+     * Problem 88: 合并两个有序数组，将数组B合并到数组A中
+     * @param A 有序数组A
+     * @param m 数组A中的合法数
+     * @param B 有序数组B
+     * @param n 数组B中的合法数
+     */
+    public void merge(int A[], int m, int[] B, int n){
+        int filledOffset = m + n - 1;
+        int offsetA = m - 1;
+        int offsetB = n - 1;
+        while(offsetA > -1 && offsetB > -1){
+            if(A[offsetA] < B[offsetB]){
+                A[filledOffset--] = B[offsetB--];
+            }else{
+                A[filledOffset--] = A[offsetA--];
+            }
+        }
+        while(offsetA > -1){
+            A[filledOffset--] = A[offsetA--];
+        }
+        while(offsetB > -1){
+            A[filledOffset--] = B[offsetB--];
+        }
+    }
 
 
 
