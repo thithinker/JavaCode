@@ -1238,7 +1238,58 @@ public class Solution {
         }
     }
 
-
+    /**
+     * Problem 4: 由链表代表的两个数，每个节点为数字中的一位，求两个数的和(如： (2->4->3) + (5->6->4) = (7->0->8))
+     * @param l1 链表
+     * @param l2 链表
+     * @return 两数的和
+     */
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2){
+        if(l1 == null){
+            return l2;
+        }else if(l2 == null){
+            return l1;
+        }
+        int carry = 0;
+        ListNode resultHead = null;
+        ListNode curr = null;
+        int sum;
+        while(l1 != null && l2 != null){
+            if(resultHead == null){
+                sum = l1.val + l2.val + carry;
+                resultHead = new ListNode(sum % 10);
+                carry = sum / 10;
+                curr = resultHead;
+                l1 = l1.next;
+                l2 = l2.next;
+            }else{
+                sum = l1.val + l2.val + carry;
+                curr.next = new ListNode(sum % 10);
+                curr = curr.next;
+                carry = sum / 10;
+                l1 = l1.next;
+                l2 = l2.next;
+            }
+        }
+        while(l1 != null){
+            sum = l1.val + carry;
+            curr.next = new ListNode(sum % 10);
+            curr = curr.next;
+            carry = sum / 10;
+            l1 = l1.next;
+        }
+        while(l2 != null){
+            sum = l2.val + carry;
+            curr.next = new ListNode(sum % 10);
+            curr = curr.next;
+            carry = sum / 10;
+            l2 = l2.next;
+        }
+        if(carry != 0){
+            curr.next = new ListNode(carry);
+        }
+        return resultHead;
+    }
 
 
 

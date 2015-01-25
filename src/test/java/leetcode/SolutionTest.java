@@ -571,7 +571,23 @@ public class SolutionTest extends TestCase {
 //        solution.merge(A,  , B, );
     }
 
+    public void testAddTwoNumbers(){
+        ListNode l1_1 = TestTools.createList(new int[]{2,4,3});
+        ListNode l1_2 = TestTools.createList(new int[]{5,6,4});
+        TestTools.printList(solution.addTwoNumbers(l1_1, l1_2));
 
+        ListNode l2_1 = TestTools.createList(new int[]{});
+        ListNode l2_2 = TestTools.createList(new int[]{5,6,4});
+        TestTools.printList(solution.addTwoNumbers(l2_1, l2_2));
+
+        ListNode l3_1 = TestTools.createList(new int[]{0});
+        ListNode l3_2 = TestTools.createList(new int[]{1,8});
+        TestTools.printList(solution.addTwoNumbers(l3_1, l3_2));
+
+        ListNode l4_1 = TestTools.createList(new int[]{5});
+        ListNode l4_2 = TestTools.createList(new int[]{5});
+        TestTools.printList(solution.addTwoNumbers(l4_1, l4_2));
+    }
 
 
 
