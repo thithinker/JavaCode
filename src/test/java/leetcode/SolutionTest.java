@@ -589,7 +589,17 @@ public class SolutionTest extends TestCase {
         TestTools.printList(solution.addTwoNumbers(l4_1, l4_2));
     }
 
+    public void testLargestNumber(){
+        int[] arr0 = {3, 30, 34, 5, 9};
+        System.out.println("Result: " + solution.largestNumber(arr0));
 
+
+        int[] arr1 = {30, 5, 3, 34, 9};
+        System.out.println("Result: " + solution.largestNumber(arr1));
+
+        int[] arr2 = {0, 0};
+        System.out.println("Result: " + solution.largestNumber(arr2));
+    }
 
 
 

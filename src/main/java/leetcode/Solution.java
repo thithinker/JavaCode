@@ -1291,6 +1291,86 @@ public class Solution {
         return resultHead;
     }
 
+    /**
+     * Problem 179: 用给定的非负整数数组中的数组成最大的数，以字符串的形式返回该数
+     * @param num 整数数组
+     * @return 由输入整数数组组成的最大的数
+     */
+    public String largestNumber(int[] num){
+        int countZero = 0;
+        for(int i : num){
+            if(i == 0)
+                countZero++;
+        }
+        if(countZero == num.length){
+            return 0 + "";
+        }
+        List<String> list = new ArrayList<String>(num.length);
+        for(int i : num){
+            list.add(i + "");
+        }
+        Collections.sort(list, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                if((o1 + o2).compareTo(o2 + o1) > 0){
+                    return -1;
+                }
+                return 1;
+            }
+        });
+        StringBuilder sb = new StringBuilder();
+        for(String s : list){
+            sb.append(s);
+        }
+        return sb.toString();
+    }
+
+    public String largestNumber_2(int[] num){
+        int countZero = 0;
+        for(int i : num){
+            if(i == 0)
+                countZero++;
+        }
+        if(countZero == num.length){
+            return 0 + "";
+        }
+        List<String> list = new ArrayList<String>(num.length);
+        for(int i : num){
+            list.add(i + "");
+        }
+        Collections.sort(list, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                if((o1 + o2).compareTo(o2 + o1) > 0){
+                    return -1;
+                }
+                return 1;
+            }
+        });
+        StringBuilder sb = new StringBuilder();
+        for(String s : list){
+            sb.append(s);
+        }
+        return sb.toString();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
