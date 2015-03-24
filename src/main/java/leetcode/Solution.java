@@ -1354,8 +1354,68 @@ public class Solution {
         return sb.toString();
     }
 
+    /**
+     * Problem 191:计算一个无符号整数二进制表示中1的个数
+     * @param n 输入参数
+     * @return 输入参数的二进制表示中1的个数
+     */
+    public int hammingWeight(long n){
+        int result = 0;
+        while(n != 0){
+            if((n & 0x1) == 1){
+                result++;
+            }
+            n = n >>> 1;
+        }
+        return result;
+    }
 
+    /**
+     * Problem190: 反转一个无符号整数二进制表示，将得到的二进制数转换成无符号整数
+     * @param n 输入的无符号整数
+     * @return 反转n的二进制表示后得到的无符号整数
+     */
+    public int reverseBits(int n){
+        long result = 0;
+        String bits = Integer.toBinaryString(n);
+        System.out.println(bits);
+        for(int i = 0; i < bits.length(); i++){
+            if(bits.charAt(i) == '0'){
+                continue;
+            }
+            result += Math.pow(2, 32 + i - bits.length());
+        }
+        System.out.println("result: " + result);
+        return (int)result;
+    }
 
+    /**
+     * Problem189: 右移数组
+     * @param nums 输入输入
+     * @param k 将输入数组右移k个数
+     */
+    public void rotate(int[] nums, int k){
+        k = k % nums.length;
+        int len = nums.length - 1;
+        if(len <= 0){
+            return;
+        }
+        rotate(nums, 0, len - k);
+        rotate(nums, len - k + 1, len);
+        rotate(nums, 0, len);
+
+    }
+
+    private void rotate(int[] nums, int begin, int end){
+        int tmp;
+        while(begin < end){
+            tmp = nums[begin];
+            nums[begin] = nums[end];
+            nums[end] = tmp;
+            begin++;
+            end--;
+        }
+    }
 
 
 

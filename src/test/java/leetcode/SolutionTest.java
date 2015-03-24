@@ -601,8 +601,30 @@ public class SolutionTest extends TestCase {
         System.out.println("Result: " + solution.largestNumber(arr2));
     }
 
+    public void testHammingWright(){
+        assertEquals(0, solution.hammingWeight(0));
+        assertEquals(1, solution.hammingWeight(1));
+        assertEquals(2, solution.hammingWeight(5));
+        assertEquals(3, solution.hammingWeight(11));
+        assertEquals(1, solution.hammingWeight(64));
+        assertEquals(1, solution.hammingWeight(2147483648L));
+    }
 
 
+    public void testReverseBits(){
+        assertEquals(964176192, solution.reverseBits(43261596));
+    }
+
+    public void testRotate(){
+        int[] arr = {1,2,3,4,5,6,7};
+        solution.rotate(arr, 3);
+        TestTools.printArray(arr);
+
+        int[] arr2 = {1};
+        solution.rotate(arr2, 2);
+        TestTools.printArray(arr2);
+
+    }
 
 
 
