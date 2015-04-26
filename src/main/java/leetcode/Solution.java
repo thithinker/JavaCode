@@ -1418,6 +1418,62 @@ public class Solution {
     }
 
 
+    /**
+     * Problem202：判断一个数是不是Happy数
+     * @param n 输入数字
+     * @return true OR false
+     */
+    public boolean isHappy(int n){
+        if(n <= 0){
+            return false;
+        }
+        BitSet bs = new BitSet();
+        int sum = 0;
+        bs.set(n);
+        String s = n + "";
+        while(true){
+            for(int i = 0; i < s.length(); i++){
+                sum += (int)Math.pow(s.charAt(i) - '0', 2);
+            }
+//            System.out.println("sum: " + sum + " s: " + s + (sum == 1));
+            if(sum == 1){
+//                System.out.println("return");
+                return true;
+            }else if(!bs.get(sum)){
+                bs.set(sum);
+            }else if(bs.get(sum)){
+                return false;
+            }
+            s = sum + "";
+            sum = 0;
+        }
+    }
+
+    //方法一有内存限制
+    public boolean isHappy_2(int n){
+        if(n <= 0){
+            return false;
+        }
+        LinkedHashSet<Integer> set = new LinkedHashSet<Integer>();
+        int sum = 0;
+        set.add(n);
+        String s = n + "";
+        while(true){
+            for(int i = 0; i < s.length(); i++){
+                sum += (int)Math.pow(s.charAt(i) - '0', 2);
+            }
+            if(sum == 1){
+                return true;
+            }else if(!set.contains(sum)){
+                set.add(sum);
+            }else if(set.contains(sum)){
+                return false;
+            }
+            s = sum + "";
+            sum = 0;
+        }
+    }
+
 
 
 
