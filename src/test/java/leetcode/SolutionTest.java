@@ -2,8 +2,6 @@ package leetcode;
 
 import junit.framework.TestCase;
 
-import java.util.List;
-
 public class SolutionTest extends TestCase {
     Solution solution;
 
@@ -129,8 +127,8 @@ public class SolutionTest extends TestCase {
         String expect2 = "Apalindromeisaword,phrase,number,orothersequenceofunitsthatcanbereadthesamewayineitherdirection,withgeneralallowancesforadjustmentstopunctuationandworddividers.";
         assertEquals(expect2, solution.convert(s2, 1));
 
-        char[] chs = new char[3];
-        System.out.println(chs[0] + 1);
+//        char[] chs = new char[3];
+//        System.out.println(chs[0] + 1);
     }
 
     public void testReverse(){
@@ -247,17 +245,17 @@ public class SolutionTest extends TestCase {
         assertEquals(false, solution.isValid("({}]]"));
     }
 
-    public void testIsValid_2(){
-        assertEquals(true, solution.isValid_2("()"));
-        assertEquals(true, solution.isValid_2("([])"));
-        assertEquals(true, solution.isValid_2("()[]{}"));
-        assertEquals(true, solution.isValid_2("()[{}]"));
-        assertEquals(true, solution.isValid_2("({[][]})"));
-        assertEquals(false, solution.isValid_2("("));
-        assertEquals(false, solution.isValid_2("(]"));
-        assertEquals(false, solution.isValid_2("([]}"));
-        assertEquals(false, solution.isValid_2("({}]]"));
-    }
+//    public void testIsValid_2(){
+////        assertEquals(true, solution.isValid_2("()"));
+//        assertEquals(true, solution.isValid_2("([])"));
+//        assertEquals(true, solution.isValid_2("()[]{}"));
+//        assertEquals(true, solution.isValid_2("()[{}]"));
+//        assertEquals(true, solution.isValid_2("({[][]})"));
+//        assertEquals(false, solution.isValid_2("("));
+//        assertEquals(false, solution.isValid_2("(]"));
+//        assertEquals(false, solution.isValid_2("([]}"));
+//        assertEquals(false, solution.isValid_2("({}]]"));
+//    }
 
     public void testRemoveNthNodeFromEnd(){
         int[] arr = {2,3,6,4,1,4,5};
@@ -343,24 +341,24 @@ public class SolutionTest extends TestCase {
         assertEquals(0, solution.removeDuplicates(new int[]{}));
         assertEquals(1, solution.removeDuplicates(new int[]{0}));
 
-        assertEquals(3, solution.removeDuplicates(new int[]{1, 2,2,3}));
+        assertEquals(3, solution.removeDuplicates(new int[]{1, 2, 2, 3}));
         assertEquals(2, solution.removeDuplicates(new int[]{1, 3}));
-        assertEquals(5, solution.removeDuplicates(new int[]{1, 2,2,2,2,2,4,4,5,5,5,7}));
-        assertEquals(3, solution.removeDuplicates(new int[]{1, 2,3,3,3,3,3}));
-        assertEquals(2, solution.removeDuplicates(new int[]{1,1,1,1,1,1,3}));
+        assertEquals(5, solution.removeDuplicates(new int[]{1, 2, 2, 2, 2, 2, 4, 4, 5, 5, 5, 7}));
+        assertEquals(3, solution.removeDuplicates(new int[]{1, 2, 3, 3, 3, 3, 3}));
+        assertEquals(2, solution.removeDuplicates(new int[]{1, 1, 1, 1, 1, 1, 3}));
     }
 
     public void testRemoveElement(){
         assertEquals(0, solution.removeElement(new int[]{}, 1));
         assertEquals(0, solution.removeElement(new int[]{1}, 1));
         assertEquals(1, solution.removeElement(new int[]{2}, 1));
-        assertEquals(0, solution.removeElement(new int[]{1,1,1}, 1));
-        assertEquals(4, solution.removeElement(new int[]{1,2,3,3,1,1,4}, 1));
-        assertEquals(3, solution.removeElement(new int[]{2,3,2}, 1));
-        assertEquals(1, solution.removeElement(new int[]{2,3,2}, 2));
-        assertEquals(2, solution.removeElement(new int[]{2,3,2}, 3));
-        assertEquals(8, solution.removeElement(new int[]{1,2,3,2,3,5,2,7,2,6,8,4,2}, 2));
-        assertEquals(7, solution.removeElement(new int[]{2,2,3,2,3,5,2,7,2,6,8,4,2}, 2));
+        assertEquals(0, solution.removeElement(new int[]{1, 1, 1}, 1));
+        assertEquals(4, solution.removeElement(new int[]{1, 2, 3, 3, 1, 1, 4}, 1));
+        assertEquals(3, solution.removeElement(new int[]{2, 3, 2}, 1));
+        assertEquals(1, solution.removeElement(new int[]{2, 3, 2}, 2));
+        assertEquals(2, solution.removeElement(new int[]{2, 3, 2}, 3));
+        assertEquals(8, solution.removeElement(new int[]{1, 2, 3, 2, 3, 5, 2, 7, 2, 6, 8, 4, 2}, 2));
+        assertEquals(7, solution.removeElement(new int[]{2, 2, 3, 2, 3, 5, 2, 7, 2, 6, 8, 4, 2}, 2));
     }
 
     public void testIsValidSoduku(){
@@ -438,7 +436,7 @@ public class SolutionTest extends TestCase {
         assertEquals("111221", solution.countAndSay(5));
         assertEquals("312211", solution.countAndSay(6));
         //33的结果已有9898个字符
-        assertEquals("", solution.countAndSay(33));
+//        assertEquals("", solution.countAndSay(33));
     }
 
     public void testLengthOfLastWord(){
@@ -502,11 +500,11 @@ public class SolutionTest extends TestCase {
     public void testPlusOne(){
         int[] r1 = solution.plusOne(new int[]{1,1,1});
         TestTools.printArray(r1);
-        int[] r2 = solution.plusOne(new int[]{1,1,9});
+        int[] r2 = solution.plusOne(new int[]{1, 1, 9});
         TestTools.printArray(r2);
-        int[] r3 = solution.plusOne(new int[]{1,9,9});
+        int[] r3 = solution.plusOne(new int[]{1, 9, 9});
         TestTools.printArray(r3);
-        int[] r4 = solution.plusOne(new int[]{9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9});
+        int[] r4 = solution.plusOne(new int[]{9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9});
         TestTools.printArray(r4);
 
     }
@@ -518,7 +516,7 @@ public class SolutionTest extends TestCase {
         TestTools.printArray(r2);
         int[] r3 = solution.plusOne_2(new int[]{1, 9, 9});
         TestTools.printArray(r3);
-        int[] r4 = solution.plusOne_2(new int[]{9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9});
+        int[] r4 = solution.plusOne_2(new int[]{9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9});
         TestTools.printArray(r4);
 
     }
@@ -564,7 +562,7 @@ public class SolutionTest extends TestCase {
     public void testMerge(){
         int[] A = {1,3,7, 9, 0,0,0,0,0,0,0,0};
         int[] B = {2,2,3,4,5};
-        solution.merge(A, 4 , B, 5);
+        solution.merge(A, 4, B, 5);
         TestTools.printArray(A);
 //        int[] A = {};
 //        int[] B = {};
@@ -626,7 +624,66 @@ public class SolutionTest extends TestCase {
 
     }
 
+    public void testIsHappy(){
+        assertEquals(true, solution.isHappy(19));
+        assertEquals(true, solution.isHappy(1));
+        assertEquals(false, solution.isHappy(2));
+//        assertEquals(false, solution.isHappy(0));
+    }
 
+    public void testIsHappy_2(){
+        assertEquals(true, solution.isHappy_2(19));
+        assertEquals(true, solution.isHappy_2(1));
+        assertEquals(false, solution.isHappy_2(2));
+        assertEquals(false, solution.isHappy_2(0));
+    }
+
+//    public void testCountPrimes(){
+//        assertEquals(4, solution.countPrimes(10));
+//        assertEquals(4, solution.countPrimes(7));
+//        assertEquals(3, solution.countPrimes(6));
+//        assertEquals(1, solution.countPrimes(2));
+//        assertEquals(348513, solution.countPrimes(5000000));
+//    }
+
+    public void testCountPrimes_2(){
+        assertEquals(4, solution.countPrimes_2(10));
+        assertEquals(3, solution.countPrimes_2(7));
+        assertEquals(3, solution.countPrimes_2(6));
+        assertEquals(0, solution.countPrimes_2(0));
+        assertEquals(348513, solution.countPrimes_2(5000000));
+    }
+
+    public void testRemoveElements(){
+        ListNode head1 = TestTools.createList(new int[]{1, 2, 6, 3, 4, 5, 6});
+        TestTools.printList(head1);
+        head1 = solution.removeElements(head1, 6);
+        TestTools.printList(head1);
+
+        ListNode head2 = TestTools.createList(new int[]{1, 2, 1, 1, 1, 5, 6});
+        TestTools.printList(head2);
+        head2 = solution.removeElements(head2, 1);
+        TestTools.printList(head2);
+    }
+
+    public void testRangeBitwiseAnd(){
+        assertEquals(4, solution.rangeBitwiseAnd(5,7));
+        System.out.println("-------------------------------------------------");
+        assertEquals(0, solution.rangeBitwiseAnd(5, 108));
+        assertEquals(0, solution.rangeBitwiseAnd(700000000,2147483641));   //700000000, 2147483641
+        assertEquals(2147483647, solution.rangeBitwiseAnd(2147483647, 2147483647));   //2147483647, 2147483647
+
+    }
+
+    public void testRangeBitwiseAnd_2(){
+        assertEquals(4, solution.rangeBitwiseAnd_2(5,7));
+        assertEquals(4, solution.rangeBitwiseAnd_2(4,5));
+        System.out.println("-------------------------------------------------");
+        assertEquals(0, solution.rangeBitwiseAnd_2(5, 108));
+        assertEquals(0, solution.rangeBitwiseAnd_2(700000000, 2147483641));   //700000000, 2147483641
+        assertEquals(2147483647, solution.rangeBitwiseAnd_2(2147483647,2147483647));   //2147483647, 2147483647
+
+    }
 
 
 

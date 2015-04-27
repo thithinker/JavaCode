@@ -1385,7 +1385,7 @@ public class Solution {
             }
             result += Math.pow(2, 32 + i - bits.length());
         }
-        System.out.println("result: " + result);
+//        System.out.println("result: " + result);
         return (int)result;
     }
 
@@ -1474,10 +1474,120 @@ public class Solution {
         }
     }
 
+    /**
+     * Problem204: 计算上限范围内素数的个数
+     * @param n 上限
+     * @return n以内素数的个数
+     */
+    public int countPrimes(int n){
+        if(n < 2){
+            return 0;
+        }
+        boolean[] b = new boolean[n + 1];
+        b[0] = true;
+        b[1] = true;
+        int i = 2;
+        while(i < n){
+            for(int j = 2; j <= n / i; j++){
+                b[i * j] = true;
+            }
+            i++;
+        }
+        int count = 0;
+        for(int j = 0; j < n + 1; j++){
+            if(b[j] == false)
+                count++;
+        }
+        return count;
+    }
 
+    public int countPrimes_2(int n){
+        if(n < 2){
+            return 0;
+        }
+        boolean[] b = new boolean[n +1];
+        b[0] = true;
+        b[1] = true;
+        int i = 2;
+        while(i < n){
+            for(int j = 2; j <= n / i; j++){
+                b[i * j] = true;
+            }
+            i++;
+            while(i < b.length && b[i]){        //提高效率
+                i++;
+            }
+        }
+        int count = 0;
+        for(int j = 0; j < n; j++){
+            if(!b[j])
+                count++;
+        }
+        return count;
+    }
 
+    /**
+     * Problem203: 删除列表中指定的数字
+     * @param head 列表头结点
+     * @param val 待删除的值
+     * @return 删除指定值后的列表
+     */
+    public ListNode removeElements(ListNode head, int val){
+        if(head == null){
+            return null;
+        }
+        while(head != null && head.val == val){
+            head = head.next;
+        }
+        ListNode n1 = head;
+        ListNode n2;
+        while(n1 != null){
+            n2 = n1.next;
+            while(n2 != null && n2.val == val){
+                n2 = n2.next;
+            }
+            n1.next = n2;
+            n1 = n1.next;
+        }
 
+        return head;
+    }
 
+    /**
+     * Problem201:计算两个整数之间的所有整数作与运算后的值
+     * @param m 起始值（包含）
+     * @param n 终止值（包含）
+     * @return m到n之间所有数相与的结果
+     */
+    public int rangeBitwiseAnd(int m, int n){   //效率低
+        boolean flag;    //没有跳出，该位应当置1
+        int tmp;
+        int result = 0;
+        for(int i = 0; i < 32; i++){
+            flag = true;
+            tmp = 1 << i;
+            for(int begin = m; begin > 0 && begin <= n; begin++){
+                if(n < tmp || (begin & tmp) == 0){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                result += Math.pow(2, i);
+            }
+        }
+        return result;
+    }
+
+    public int rangeBitwiseAnd_2(int m, int n){
+        int tmp = n - m + 1;
+        int i = 0;
+        while(Math.pow(2, i) < tmp){
+            i++;
+        }
+        n = (n >> i) << i;      //低i位置0
+        return m & n;
+    }
 
 
 
