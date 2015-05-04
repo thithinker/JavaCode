@@ -1589,6 +1589,43 @@ public class Solution {
         return m & n;
     }
 
+    /**
+     * Problem205: 判断两个字符串是否同构(字符串同构：A字符串中的字符能够依序映射到B字符串中的字符，并且相同的字符映射结果一样，不同的字符
+     *              映射到不同的字符上，则A串和B串同构)
+     * @param s 第一个字符串
+     * @param t 第二个字符串
+     * @return 若m、n同构则返回true，否则返回false
+     */
+    public boolean isIsomorphic(String s, String t){
+        if(s == null || t == null){     //判空
+            return false;
+        }
+        if(s.length() != t.length()){   //长度判断
+            return false;
+        }
+        int len = s.length();
+        int[] tmp = new int[256];
+        int p;
+        for (int i = 0; i < len; i++){      //判断相同的字符是否映射到同一个字符
+            p = s.charAt(i);
+            if(tmp[p] == 0){
+                tmp[p] = t.charAt(i);
+            }else if(tmp[p] != t.charAt(i)){
+                return false;
+            }
+        }
+        int[] tmp2 = new int[256];
+        for (int i = 0; i < tmp.length; i++) {      //判断是否有不同的字符映射到同一个字符
+            if(tmp2[tmp[i]] == 0){
+                tmp2[tmp[i]] = tmp[i];
+            }else{
+                System.out.println("solution2");
+                return false;
+            }
+        }
+        return true;
+    }
+
 
 
 
