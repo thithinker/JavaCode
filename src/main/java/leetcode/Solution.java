@@ -1626,6 +1626,26 @@ public class Solution {
         return true;
     }
 
+    /**
+     * Problem206：反转列表
+     * @param head 列表头节点
+     * @return 翻转后列表头结点
+     */
+    public ListNode reverseList(ListNode head){
+        if(head == null || head.next == null){
+            return head;
+        }
+        ListNode p = head;
+        ListNode q = head.next;
+        p.next = null;
+        while(q != null){
+            head = q;
+            q = q.next;
+            head.next = p;
+            p = head;
+        }
+        return head;
+    }
 
 
 
