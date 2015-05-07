@@ -1629,7 +1629,7 @@ public class Solution {
     /**
      * Problem206：反转列表
      * @param head 列表头节点
-     * @return 翻转后列表头结点
+     * @return 翻转后列表的头结点
      */
     public ListNode reverseList(ListNode head){
         if(head == null || head.next == null){
